@@ -1,6 +1,6 @@
 //
 //  SecondViewController.swift
-//  halfstep
+//  halfstep - the legends
 //
 //  Created by Stefan Swaans on 11/17/17.
 //  Copyright © 2017 CS 147. All rights reserved.
