@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E57F1A41FCE8C3F009132B2 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E57F1A31FCE8C3F009132B2 /* Lesson.swift */; };
+		6E57F1A61FCE9441009132B2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E57F1A51FCE9441009132B2 /* User.swift */; };
+		6E57F1A81FCE95DF009132B2 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E57F1A71FCE95DF009132B2 /* Note.swift */; };
+		6E57F1AA1FCE9687009132B2 /* InterUserObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E57F1A91FCE9687009132B2 /* InterUserObj.swift */; };
+		6E57F1AC1FCE9774009132B2 /* Applause.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E57F1AB1FCE9774009132B2 /* Applause.swift */; };
+		6E57F1AE1FCE99D8009132B2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E57F1AD1FCE99D8009132B2 /* Event.swift */; };
+		6E57F1B01FCE9A93009132B2 /* LessonCompleteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E57F1AF1FCE9A93009132B2 /* LessonCompleteEvent.swift */; };
+		6E57F1B21FCEA10B009132B2 /* TreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E57F1B11FCEA10B009132B2 /* TreeNode.swift */; };
+		6E57F1B41FCEA546009132B2 /* RecordLesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E57F1B31FCEA546009132B2 /* RecordLesson.swift */; };
 		F1405E541FCA3E17007F6305 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1405E531FCA3E17007F6305 /* FriendsViewController.swift */; };
 		F1405E561FCB6E2C007F6305 /* GoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1405E551FCB6E2C007F6305 /* GoalsViewController.swift */; };
 		F1405E581FCB8460007F6305 /* SelectGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1405E571FCB8460007F6305 /* SelectGoalViewController.swift */; };
@@ -21,6 +30,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6E57F1A31FCE8C3F009132B2 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		6E57F1A51FCE9441009132B2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6E57F1A71FCE95DF009132B2 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		6E57F1A91FCE9687009132B2 /* InterUserObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterUserObj.swift; sourceTree = "<group>"; };
+		6E57F1AB1FCE9774009132B2 /* Applause.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Applause.swift; sourceTree = "<group>"; };
+		6E57F1AD1FCE99D8009132B2 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		6E57F1AF1FCE9A93009132B2 /* LessonCompleteEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCompleteEvent.swift; sourceTree = "<group>"; };
+		6E57F1B11FCEA10B009132B2 /* TreeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeNode.swift; sourceTree = "<group>"; };
+		6E57F1B31FCEA546009132B2 /* RecordLesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordLesson.swift; sourceTree = "<group>"; };
 		F1405E531FCA3E17007F6305 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		F1405E551FCB6E2C007F6305 /* GoalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsViewController.swift; sourceTree = "<group>"; };
 		F1405E571FCB8460007F6305 /* SelectGoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGoalViewController.swift; sourceTree = "<group>"; };
@@ -79,13 +97,22 @@
 			children = (
 				F1405E521FCA386D007F6305 /* Supporting Files */,
 				F1ADCC1B1FBF91F000DCB57A /* Main.storyboard */,
+				6E57F1AB1FCE9774009132B2 /* Applause.swift */,
+				6E57F1B31FCEA546009132B2 /* RecordLesson.swift */,
 				F1405E5B1FCB89B8007F6305 /* GoalData.swift */,
+				6E57F1AD1FCE99D8009132B2 /* Event.swift */,
+				6E57F1AF1FCE9A93009132B2 /* LessonCompleteEvent.swift */,
+				6E57F1B11FCEA10B009132B2 /* TreeNode.swift */,
 				F1405E571FCB8460007F6305 /* SelectGoalViewController.swift */,
 				F1405E531FCA3E17007F6305 /* FriendsViewController.swift */,
 				F1405E551FCB6E2C007F6305 /* GoalsViewController.swift */,
 				F1AA7A071FCBE03D003D6769 /* LessonsCollectionViewController.swift */,
 				F1405E591FCB8808007F6305 /* GoalCollectionViewCell.swift */,
 				F1AA7A091FCCC56D003D6769 /* Goal.swift */,
+				6E57F1A31FCE8C3F009132B2 /* Lesson.swift */,
+				6E57F1A51FCE9441009132B2 /* User.swift */,
+				6E57F1A71FCE95DF009132B2 /* Note.swift */,
+				6E57F1A91FCE9687009132B2 /* InterUserObj.swift */,
 			);
 			path = halfstep;
 			sourceTree = "<group>";
@@ -162,14 +189,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E57F1A41FCE8C3F009132B2 /* Lesson.swift in Sources */,
+				6E57F1AA1FCE9687009132B2 /* InterUserObj.swift in Sources */,
 				F1AA7A0A1FCCC56D003D6769 /* Goal.swift in Sources */,
+				6E57F1B01FCE9A93009132B2 /* LessonCompleteEvent.swift in Sources */,
 				F1AA7A081FCBE03D003D6769 /* LessonsCollectionViewController.swift in Sources */,
 				F1405E5C1FCB89B8007F6305 /* GoalData.swift in Sources */,
 				F1405E5A1FCB8808007F6305 /* GoalCollectionViewCell.swift in Sources */,
 				F1405E541FCA3E17007F6305 /* FriendsViewController.swift in Sources */,
 				F1405E561FCB6E2C007F6305 /* GoalsViewController.swift in Sources */,
+				6E57F1B41FCEA546009132B2 /* RecordLesson.swift in Sources */,
+				6E57F1A81FCE95DF009132B2 /* Note.swift in Sources */,
 				F1ADCC161FBF91F000DCB57A /* AppDelegate.swift in Sources */,
+				6E57F1A61FCE9441009132B2 /* User.swift in Sources */,
+				6E57F1AC1FCE9774009132B2 /* Applause.swift in Sources */,
+				6E57F1AE1FCE99D8009132B2 /* Event.swift in Sources */,
 				F1405E581FCB8460007F6305 /* SelectGoalViewController.swift in Sources */,
+				6E57F1B21FCEA10B009132B2 /* TreeNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,8 +12,10 @@ class GoalData {
     
     private static let sharedInstance = GoalData()
     private var goalNames: [String]
+    private var goals: [Goal]
     private init() {
         goalNames = ["major scales", "minor scales", "triads", "time signatures", "progressions", "key signatures", "interval training", "secondary functions", "musical forms"]
+        goals = [] // David please create a bunch of goal objects and put them in
     }
     
     public static func getSharedInstance() -> GoalData {
