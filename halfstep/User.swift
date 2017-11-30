@@ -7,42 +7,29 @@
 //
 
 import Foundation
+import CoreData
 
-class User {
-    private var name: String
-    private var currentGoal: Goal?
-    private var goals: [Goal]
-    private var currentLesson: Lesson?
-    private var profilePicPath: String
-    private var friends: [User]
-    private var allNotes: [Note]
-    private var receivedNotes: [Note]
-    private var sentNotes: [Note]
-    private var applausesReceived: [Applause]
-    private var allUserEvents: [UserEvent]
+class User: NSManagedObject {
+//    private var profilePicPath: String
+//    private var allNotes: [Note]
+//    private var receivedNotes: [Note]
+//    private var sentNotes: [Note]
+//    private var applausesReceived: [Applause]
     
-    init (username: String, picPath: String) {
-        name = username
-        currentGoal = nil
-        goals = []
-        currentLesson = nil
-        profilePicPath = picPath
-        friends = []
-        allNotes = []
-        receivedNotes = []
-        sentNotes = []
-        applausesReceived = []
-        allUserEvents = []
-    }
+    let context = AppDelegate.persistentContainer.viewContext
     
     // TODO: decide whether default behavior is to make the goal you add
     // your new current goal
     public func addGoal(goalToAdd: Goal, makeCurrentGoal: Bool = true){
-        goals.append(goalToAdd)
+        addToGoals(goalToAdd)
         // make current goal as well?
         if makeCurrentGoal {
             setCurrentGoal(goalToSet: goalToAdd)
         }
+    }
+    
+    public func getCurrentGoal() -> Goal? {
+        return currentGoal
     }
     
     public func setCurrentGoal(goalToSet: Goal){
@@ -61,11 +48,56 @@ class User {
     public func completeLesson(lessonToComplete: Lesson){
         currentGoal?.completeLesson(lessonCompleted: lessonToComplete)
         lessonToComplete.completeLesson()
-        var completeLessonEvent = LessonCompleteEvent(timestamp: Date(), lessonCompleted: lessonToComplete) // gross but pass in current time in seconds since 1970 for timestamp
+        
+        let completeLessonEvent = LessonCompleteEvent(context: context)
+        completeLessonEvent.timeCompleted = Date() as NSDate // current time in seconds since 1970
+        completeLessonEvent.lessonCompleted = lessonToComplete
+        completeLessonEvent.content = "Lesson completed!"
+        
         addUserEvent(eventToAdd: completeLessonEvent)
     }
     
     public func addUserEvent(eventToAdd: UserEvent) {
-        allUserEvents.append(eventToAdd)
+        addToAllUserEvents(eventToAdd)
+    }
+    
+    public static func getCurrentUser() -> User? {
+        let context = AppDelegate.persistentContainer.viewContext
+        do {
+            // If user doesn't exist, we must create one
+            let userID = UserDefaults.standard.integer(forKey: "userID")
+            if userID == 0 {
+                let request: NSFetchRequest<User> = User.fetchRequest()
+                let users = try context.fetch(request)
+                UserDefaults.standard.setValue(users.count + 1, forKey: "userID")
+            }
+        } catch {
+            return nil
+        }
+        
+        do {
+            let request: NSFetchRequest<User> = User.fetchRequest()
+            request.predicate = NSPredicate(format: "id = %d", UserDefaults.standard.integer(forKey: "userID"))
+            let currentUsers = try context.fetch(request)
+            if currentUsers.count > 0 {
+                return currentUsers[0]
+            }
+            else if currentUsers.count == 0 {
+                let currentUser = User(context: context)
+                currentUser.setValue("Stefan Swaans", forKey: "name")
+                currentUser.setValue(nil, forKey: "currentGoal")
+                currentUser.setValue(nil, forKey: "currentLesson")
+                currentUser.setValue(nil, forKey: "goals")
+                currentUser.setValue(nil, forKey: "friends")
+                currentUser.setValue(nil, forKey: "currentGoal")
+                currentUser.setValue(nil, forKey: "allUserEvents")
+                currentUser.setValue(1, forKey: "id")
+                try context.save()
+                return currentUser
+            }
+        } catch {
+            return nil
+        }
+        return nil
     }
 }

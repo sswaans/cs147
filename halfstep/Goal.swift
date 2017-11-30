@@ -7,35 +7,44 @@
 //
 
 import Foundation
+import CoreData
 
-class Goal {
-    public var Progress: Double {
-        get{
-            return 1
-        }
-        set (value){
-            progress = value
-        }
-    }
+class Goal: NSManagedObject {
+//    public var Progress: Double {
+//        get{
+//            return 1
+//        }
+//        set (value){
+//            progress = value
+//        }
+//    }
     
-    private var name: String // "Major Scales"
-    private var level = 0 // Always 0
-    private var lessons: [Lesson] // [Lesson(C), Lesson(C,D,E)...]
-    private var description: String // "Learn your way through all 12 major scales"
-    private var progress = 0.0 // Always 0.0
-    private var iconPath: String // "SupportingFiles/img/majorscales.png"
-    private var progressRequired = 1.0
+//    private var name: String // "Major Scales"
+//    private var level = 0 // Always 0
+//    private var lessons: [Lesson] // [Lesson(C), Lesson(C,D,E)...]
+//    private var description: String // "Learn your way through all 12 major scales"
+//    private var progress = 0.0 // Always 0.0
+//    private var iconPath: String // "SupportingFiles/img/majorscales.png"
+//    private var progressRequired = 1.0
     
-    init(goalName: String, goalLessons: [Lesson], goalDescription: String, goalIconPath: String) {
-        name = goalName
-        lessons = goalLessons
-        description = goalDescription
-        iconPath = goalIconPath
-    }
+//    init(goalName: String, goalLessons: [Lesson], goalDescription: String, goalIconPath: String) {
+//        name = goalName
+//        lessons = goalLessons
+//        description = goalDescription
+//        iconPath = goalIconPath
+//    }
     
     // Function completeLesson is called when the user completes a lesson
     public func completeLesson(lessonCompleted: Lesson) {
-        increaseProgress(pointGain: lessonCompleted.ExperiencePoints)
+        increaseProgress(pointGain: lessonCompleted.xpPoints)
+    }
+    
+    public func getNumLessons() -> Int {
+        return (lessons?.count)!
+    }
+    
+    public func getName() -> String {
+        return name!
     }
     
     // Function increaseProgress is usually called by completeLesson,

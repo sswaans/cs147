@@ -10,7 +10,7 @@ import UIKit
 
 class GoalCollectionViewCell: UICollectionViewCell {
     
-    var goalName : String?
+    var goal: Goal?
     @IBOutlet weak var goalLabel: UILabel!
     
 }

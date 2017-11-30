@@ -14,6 +14,8 @@ class SelectGoalViewController: UIViewController {
     @IBOutlet weak var goalButton: UIButton!
     @IBOutlet weak var goalDescription: UILabel!
     
+    var goal: Goal?
+    
     weak var delegate: SelectGoalDelegate?
     
     override func viewDidLoad() {
@@ -33,7 +35,7 @@ class SelectGoalViewController: UIViewController {
     @IBAction func onClick(_ sender: UIButton) {
         DispatchQueue.main.async { [weak self] in
             self?.dismiss(animated: false, completion: { completed in
-                self?.delegate?.shouldSwitchToLessons(forGoal: (self?.goalLabel.text!)!)
+                self?.delegate?.shouldSwitchToLessons(forGoal: (self?.goal)!)
             })
         }
         

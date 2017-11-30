@@ -12,7 +12,7 @@ class RecordLesson: Lesson {
     //var viewtype: ViewType
     // var questionContent = "Please play the following notes:"
     // var bottomDisplay = "C D E"
-    init(){
-        super.init(lessonName: "name", lessonXP: 0.1)
-    }
+//    init(){
+//        super.init(lessonName: "name", lessonXP: 0.1)
+//    }
 }

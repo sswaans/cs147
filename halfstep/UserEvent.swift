@@ -1,5 +1,5 @@
 //
-//  Applause.swift
+//  UserEvent.swift
 //  halfstep
 //
 //  Created by Khoi Khoi Viet Le on 11/28/17.
@@ -7,7 +7,8 @@
 //
 
 import Foundation
-//
-//class Applause: InterUserObj {
-//
-//}
+import CoreData
+
+class UserEvent: NSManagedObject {
+    
+}

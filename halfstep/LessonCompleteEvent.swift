@@ -9,9 +9,11 @@
 import Foundation
 
 class LessonCompleteEvent: UserEvent {
-    init(timestamp: Date, lessonCompleted: Lesson) {
-        var eventMessage: String
-        eventMessage = "completed lesson: " + lessonCompleted.Name
-        super.init(timestamp: timestamp, eventString: eventMessage)
-    }
+    @NSManaged var lessonCompleted: Lesson?
+    
+//    init(timestamp: Date, lessonCompleted: Lesson) {
+//        var eventMessage: String
+////        eventMessage = "completed lesson: " + lessonCompleted.Name
+////        super.init(timestamp: timestamp, eventString: eventMessage)
+//    }
 }

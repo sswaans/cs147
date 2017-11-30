@@ -15,6 +15,9 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     @IBOutlet weak var goalsCollectionView: UICollectionView!
 
+    var user: User?
+    
+    private var selectedGoal: Goal?
     
     fileprivate var itemsPerRow = 3
     fileprivate var insets = UIEdgeInsets(top: 0, left: 20.0, bottom: 50.0, right: 20.0)
@@ -23,6 +26,7 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
         super.viewDidLoad()
         goalsCollectionView.dataSource = self
         goalsCollectionView.delegate = self
+        user = User.getCurrentUser()
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,7 +89,7 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
         }
         
         if let goalCell = cell as? GoalCollectionViewCell {
-            goalCell.goalName = GoalData.getSharedInstance().getGoalName(forIndex: indexPath.item)
+            // TODO: Wire up goals to goal cells
             goalCell.goalLabel.sizeToFit()
             goalCell.goalLabel.frame.origin = CGPoint(x: goalCell.frame.minX, y: goalCell.frame.maxY)
         }
@@ -93,17 +97,18 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
         return cell
     }
 
-
     // MARK: UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Selected item at indexPath: \(indexPath)")
         let cell = goalsCollectionView.cellForItem(at: indexPath) as! GoalCollectionViewCell
-        print("goal name: \(cell.goalName!)")
+        print("goal name: \(String(describing: cell.goal?.getName()))")
         switch indexPath.section {
         case 0:
+            user?.setCurrentGoal(goalToSet: cell.goal!)
             tabBarController?.selectedIndex = 0
         case 1:
+            selectedGoal = cell.goal
             performSegue(withIdentifier: "showSelectGoalSegue", sender: nil)
         case 2:
             break
@@ -122,6 +127,7 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
             let selectGoalViewController = segue.destination as! SelectGoalViewController
             selectGoalViewController.preferredContentSize = CGSize(width: 300, height: 400)
             selectGoalViewController.delegate = self
+            selectGoalViewController.goal = selectedGoal
             if let popoverController = selectGoalViewController.popoverPresentationController {
                 popoverController.delegate = self
                 popoverController.sourceView = self.view
@@ -134,8 +140,16 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     // MARK: SelectGoalDelegate
-    func shouldSwitchToLessons(forGoal goal: String) {
+    func shouldSwitchToLessons(forGoal goal: Goal?) {
+        selectedGoal = nil
+        user?.addGoal(goalToAdd: goal!)
         tabBarController?.selectedIndex = 0
+    }
+    
+    
+    
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        selectedGoal = nil
     }
     
 
@@ -160,5 +174,5 @@ extension GoalsViewController : UICollectionViewDelegateFlowLayout {
 }
 
 protocol SelectGoalDelegate: class {
-    func shouldSwitchToLessons(forGoal goal: String)
+    func shouldSwitchToLessons(forGoal goal: Goal?)
 }
