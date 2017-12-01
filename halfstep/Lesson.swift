@@ -7,28 +7,9 @@
 //
 
 import Foundation
+import CoreData
 
-class Lesson {
-    public var Name: String {
-        get {
-            return name
-        }
-    }
-    private var name: String
-    private var xpPoints: Double
-    private var completed = false
-    
-    public var ExperiencePoints: Double {
-        get {
-            return xpPoints
-        }
-    }
-    
-    init(lessonName: String, lessonXP: Double) {
-        name = lessonName
-        xpPoints = lessonXP
-    }
-
+class Lesson: NSManagedObject {
     public func completeLesson() {
         completed = true
     }
