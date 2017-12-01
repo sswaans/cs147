@@ -90,8 +90,15 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         if let goalCell = cell as? GoalCollectionViewCell {
             // TODO: Wire up goals to goal cells
-            goalCell.goalLabel.sizeToFit()
-            goalCell.goalLabel.frame.origin = CGPoint(x: goalCell.frame.minX, y: goalCell.frame.maxY)
+            let goalLabel = UILabel()
+            goalLabel.text = "goal name"
+            goalLabel.font = UIFont(name: "AvenirNextCondensed-Regular", size: 17.0)
+            collectionView.addSubview(goalLabel)
+            goalLabel.frame = CGRect(x: goalCell.frame.minX, y: goalCell.frame.maxY, width: goalCell.frame.width, height: 20)
+            goalLabel.textAlignment = NSTextAlignment.center
+            //goalLabel.sizeToFit()
+            goalLabel.frame.origin = CGPoint(x: goalCell.frame.minX, y: goalCell.frame.maxY)
+            goalCell.goalLabel = goalLabel
         }
     
         return cell

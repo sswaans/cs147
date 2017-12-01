@@ -11,6 +11,6 @@ import UIKit
 class GoalCollectionViewCell: UICollectionViewCell {
     
     var goal: Goal?
-    @IBOutlet weak var goalLabel: UILabel!
+    var goalLabel: UILabel?
     
 }

@@ -44,7 +44,8 @@ class LessonsCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // TODO: Add support for lessons being in the same row
-        return currentGoal!.getNumLessons()
+        //return currentGoal!.getNumLessons()
+        return 1;
     }
 
 

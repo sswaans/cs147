@@ -15,7 +15,7 @@
             <objects>
                 <navigationController id="1z7-bc-kaa" userLabel="LearnNav" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Learn" image="noteIcon" selectedImage="noteIcon" id="8zb-PD-1nh"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Z0K-fT-8TR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z0K-fT-8TR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -34,7 +34,7 @@
         <scene sceneID="3lN-Ji-ss1">
             <objects>
                 <collectionViewController id="CGe-I3-SzU" userLabel="Learn" customClass="LessonsCollectionViewController" customModule="halfstep" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="6gM-vZ-kxq">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="6gM-vZ-kxq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -477,7 +477,7 @@
             <objects>
                 <navigationController id="dk5-Kr-ILu" userLabel="FriendsNav" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Friends" image="friendsIcon" selectedImage="friendsIcon" id="I49-WN-IRR"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AbN-QD-bom">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AbN-QD-bom">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -497,7 +497,7 @@
             <objects>
                 <navigationController id="Qlz-EV-h7a" userLabel="GoalsNav" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Goals" image="goalIcon" selectedImage="goalIcon" id="bEK-YQ-MvK"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="vSX-P5-Nzh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vSX-P5-Nzh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -525,7 +525,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MhA-Io-Qyv">
-                                <rect key="frame" x="-4" y="174" width="383" height="444"/>
+                                <rect key="frame" x="-4" y="173.5" width="383" height="444.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Isr-mZ-XHJ">
                                     <size key="itemSize" width="50" height="50"/>
@@ -540,33 +540,21 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="major scales" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyf-Op-YKb">
-                                                    <rect key="frame" x="4" y="15" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.052702127309999999" green="0.59780574360000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" red="0.052702127309999999" green="0.59780574360000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <outlet property="goalLabel" destination="kyf-Op-YKb" id="zMo-j5-8C2"/>
-                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dIZ-kT-osA" userLabel="blackLine">
-                                <rect key="frame" x="-4" y="174" width="383" height="1"/>
+                                <rect key="frame" x="-4" y="173.5" width="383" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="ZGL-8d-O6F"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6f-Vy-nUZ" userLabel="detailLabel">
-                                <rect key="frame" x="0.0" y="64" width="375" height="110"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="109.5"/>
                                 <string key="text">These are your goals! Yellow ones are ones you are making progress on. Your progress is shown in the ring around the center number, which indicates your level for that skill. Blue circles are goals you have yet to start. Select a goal to learn more about it, then start. Grey goals are not accessible to you yet. </string>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="16"/>
                                 <nil key="textColor"/>
