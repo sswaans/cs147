@@ -14,10 +14,11 @@ class LessonViewController: UIViewController {
     @IBOutlet weak var recordingStatusLabel: UILabel!
     @IBOutlet weak var recordButton: UIButton!
     var isRecording = false
+    var lesson: Lesson? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-   
+        navigationItem.title = lesson?.name
     }
     @IBAction func recordButtonPressed(_ sender: UIButton) {
         if (isRecording) {

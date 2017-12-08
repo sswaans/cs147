@@ -17,6 +17,8 @@ class LessonsCollectionViewController: UICollectionViewController {
     
     private var user: User?
     
+    private var selectedLesson: Lesson?
+    
     fileprivate var insets = UIEdgeInsets(top: 0, left: 20.0, bottom: 60.0, right: 20.0)
     
     let context = AppDelegate.viewContext
@@ -58,6 +60,7 @@ class LessonsCollectionViewController: UICollectionViewController {
         if (segue.identifier == "showLessonSegue"){
             let lessonController = segue.destination as! LessonViewController
             // TODO: If we set up specific lesson stuff, it should happen here.
+            lessonController.lesson = selectedLesson!
         }
     }
 
@@ -136,6 +139,7 @@ class LessonsCollectionViewController: UICollectionViewController {
         let cell = collectionView.cellForItem(at: indexPath)
         if let lessonCell = cell as? LessonsCollectionViewCell {
             if (lessonCell.lesson?.completed)! || lessonCell.lesson == user?.currentLesson {
+                selectedLesson = lessonCell.lesson
                 performSegue(withIdentifier: "showLessonSegue", sender: self)
             }
         }

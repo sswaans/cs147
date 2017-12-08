@@ -14,7 +14,7 @@ class FriendsViewController: UIViewController, UITabBarDelegate {
     @IBOutlet weak var tabBar: UITabBar!
     
     @IBOutlet weak var newsContainer: UIView!
-    @IBOutlet weak var friendsContainer: UIView!
+    @IBOutlet weak var friendContainer: UIView!
     @IBOutlet weak var addFriendContainer: UIView!
     
     
@@ -41,7 +41,7 @@ class FriendsViewController: UIViewController, UITabBarDelegate {
         case "News":
             view.bringSubview(toFront: newsContainer)
         case "Friends":
-            view.bringSubview(toFront: friendsContainer)
+            view.bringSubview(toFront: friendContainer)
         case "Add Friend":
             view.bringSubview(toFront: addFriendContainer)
         default:

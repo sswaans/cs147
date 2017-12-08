@@ -216,8 +216,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="friends" id="ztK-Xh-5fJ"/>
                     <connections>
-                        <outlet property="addFriendContainer" destination="UfF-y9-9vz" id="pib-g2-ElR"/>
-                        <outlet property="friendsContainer" destination="yZr-Nt-srI" id="nDN-b1-ZyM"/>
+                        <outlet property="addFriendContainer" destination="yZr-Nt-srI" id="UQk-NF-8p6"/>
+                        <outlet property="friendContainer" destination="UfF-y9-9vz" id="UFZ-jp-Zds"/>
                         <outlet property="newsContainer" destination="ctX-wl-Nam" id="pIu-Ao-h4H"/>
                         <outlet property="tabBar" destination="MQn-Cy-6ab" id="W1d-GL-etL"/>
                     </connections>
@@ -234,26 +234,19 @@
                         <viewControllerLayoutGuide type="top" id="BIa-5V-c0D"/>
                         <viewControllerLayoutGuide type="bottom" id="qKf-6o-KhL"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yuA-5L-thg" customClass="AddFriendTableViewCell" customModule="halfstep" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="yuA-5L-thg" userLabel="Encompassing View" customClass="AddFriendTableViewCell" customModule="halfstep" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="505"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="1wj-kF-Cd9">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="search"/>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O28-JU-2G8">
-                                <rect key="frame" x="0.0" y="44" width="375" height="461"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="505"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="461" id="vdr-6n-QHa"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addFriendCell" rowHeight="65" id="gbN-Rf-yz9" customClass="AddFriendTableViewCell" customModule="halfstep" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gbN-Rf-yz9" id="zgx-s3-PUM">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u8V-2q-g3q">
@@ -297,14 +290,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1wj-kF-Cd9" firstAttribute="trailing" secondItem="O28-JU-2G8" secondAttribute="trailing" id="6UF-Hp-UEH"/>
-                            <constraint firstItem="1wj-kF-Cd9" firstAttribute="leading" secondItem="O28-JU-2G8" secondAttribute="leading" id="8Qv-op-KF1"/>
-                            <constraint firstAttribute="trailing" secondItem="O28-JU-2G8" secondAttribute="trailing" id="NK1-TZ-hf1"/>
-                            <constraint firstItem="O28-JU-2G8" firstAttribute="leading" secondItem="yuA-5L-thg" secondAttribute="leading" id="fbR-2y-6xE"/>
-                            <constraint firstItem="1wj-kF-Cd9" firstAttribute="top" secondItem="BIa-5V-c0D" secondAttribute="bottom" id="mhh-9h-JAD"/>
-                            <constraint firstItem="O28-JU-2G8" firstAttribute="bottom" secondItem="qKf-6o-KhL" secondAttribute="top" id="vPM-RR-FFk"/>
+                            <constraint firstItem="O28-JU-2G8" firstAttribute="top" secondItem="BIa-5V-c0D" secondAttribute="bottom" id="Yta-UU-ces"/>
+                            <constraint firstItem="O28-JU-2G8" firstAttribute="bottom" secondItem="qKf-6o-KhL" secondAttribute="top" id="hSR-9U-XeR"/>
+                            <constraint firstAttribute="trailing" secondItem="O28-JU-2G8" secondAttribute="trailing" id="qUm-Mt-IQC"/>
+                            <constraint firstItem="O28-JU-2G8" firstAttribute="leading" secondItem="yuA-5L-thg" secondAttribute="leading" id="rdB-8z-hbx"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addFriendsTable" destination="O28-JU-2G8" id="Kb1-xO-IyZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zal-wp-rOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
