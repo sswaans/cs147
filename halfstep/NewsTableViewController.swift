@@ -14,7 +14,7 @@ class NewsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loadNews()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -46,7 +46,7 @@ class NewsTableViewController: UITableViewController {
         let user = users[indexPath.row]
         let userEvent = user.allUserEvents?.anyObject() as! UserEvent
         cell.messageLabel.text = userEvent.content
-        cell.profileImageView.image = UIImage(named: user.imagePath)
+        cell.profileImageView.image = UIImage(named: user.imagePath!)
         // Configure the cell...
 
         return cell

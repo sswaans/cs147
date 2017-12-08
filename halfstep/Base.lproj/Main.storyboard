@@ -390,7 +390,7 @@
         <!--News-->
         <scene sceneID="p5x-un-C29">
             <objects>
-                <tableViewController id="kyz-FX-fPm" userLabel="News" sceneMemberID="viewController">
+                <tableViewController id="kyz-FX-fPm" userLabel="News" customClass="NewsTableViewController" customModule="halfstep" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" id="o9T-4h-bd1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="505"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
