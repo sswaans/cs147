@@ -8,17 +8,16 @@
 
 import UIKit
 
-class AddFriendTableViewController: UITableViewController {
+class AddFriendTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     var notFriendsYet = [User]()
+    
+    @IBOutlet weak var addFriendsTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        addFriendsTable.delegate = self
+        addFriendsTable.dataSource = self
         loadNotFriends()
     }
 
@@ -29,18 +28,18 @@ class AddFriendTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return notFriendsYet.count
     }
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "addFriendCell"
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? FriendTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? AddFriendTableViewCell else {
             fatalError("NOT FRIENDS")
         }
         

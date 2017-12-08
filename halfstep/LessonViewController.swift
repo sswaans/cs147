@@ -18,7 +18,7 @@ class LessonViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-   
+        navigationItem.title = lesson?.name
     }
     
     @IBAction func recordButtonPressed(_ sender: UIButton) {

@@ -52,13 +52,14 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
 
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let numLockedGoals = 1
         switch section {
         case 0:
-            return 1
+            return (user!.goals?.count)!
         case 1:
-            return 1
+            return GoalData.getArrayOfAllGoalObjects(GoalData.getSharedInstance())().count - (user!.goals?.count)! - numLockedGoals
         case 2:
-            return 1
+            return numLockedGoals
         default:
             return 0
         }
