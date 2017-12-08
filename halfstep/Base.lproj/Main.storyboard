@@ -71,6 +71,52 @@
             </objects>
             <point key="canvasLocation" x="1593" y="-457"/>
         </scene>
+        <!--Lesson Scene-->
+        <scene sceneID="3BM-wQ-7p2">
+            <objects>
+                <viewController title="Lesson Scene" id="cKM-8H-hgI" customClass="LessonViewController" customModule="halfstep" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="S7q-Hz-InJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mxj-Kd-fvn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dPm-SL-rJ3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="hit record, then play these notes." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvv-RG-seG">
+                                <rect key="frame" x="0.0" y="100" width="375" height="131"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cMajorScaleIcon" translatesAutoresizingMaskIntoConstraints="NO" id="uDS-vU-9nL">
+                                <rect key="frame" x="67" y="239" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oc8-3x-2Jl">
+                                <rect key="frame" x="144" y="539" width="86" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhi-nz-MCs">
+                                <rect key="frame" x="164" y="464" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="recordingStatusLabel" destination="Oc8-3x-2Jl" id="oy2-vH-yke"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lWe-0O-1HO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2501.5999999999999" y="-593.25337331334333"/>
+        </scene>
         <!--Friends-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
@@ -414,7 +460,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dGs-KI-SuA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2844" y="-110"/>
+            <point key="canvasLocation" x="3546" y="-114"/>
         </scene>
         <!--Entry Page-->
         <scene sceneID="IEr-pj-WrH">
@@ -444,6 +490,18 @@
                                 <state key="normal" title="start"/>
                                 <connections>
                                     <segue destination="49e-Tb-3d3" kind="show" id="CEv-BF-yj9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8S-Ee-6JE">
+                                <rect key="frame" x="260" y="560" width="84" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="QgI-vy-lK1"/>
+                                    <constraint firstAttribute="width" constant="84" id="tAg-f8-Wsl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="40"/>
+                                <state key="normal" title="david's special button"/>
+                                <connections>
+                                    <segue destination="cKM-8H-hgI" kind="show" id="fI3-KW-zdi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -596,6 +654,7 @@
     </scenes>
     <resources>
         <image name="applaudIcon" width="200" height="200"/>
+        <image name="cMajorScaleIcon" width="906" height="428"/>
         <image name="friendsIcon" width="37" height="37"/>
         <image name="goalIcon" width="37" height="37"/>
         <image name="messageIcon" width="75" height="75"/>
