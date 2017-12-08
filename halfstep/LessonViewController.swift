@@ -20,6 +20,7 @@ class LessonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = lesson?.name
+        recordingStatusLabel.adjustsFontSizeToFitWidth = true
     }
     
     @IBAction func recordButtonPressed(_ sender: UIButton) {
@@ -29,10 +30,15 @@ class LessonViewController: UIViewController {
                 recordButton.alpha = 0.3
                 clickCount += 1
             case 1:
-                recordingStatusLabel.text = "almost. try again!"
-                recordButton.alpha = 1
-                instructionsLabel.text = "Whoops, try again."
-                clickCount += 1
+                recordButton.alpha = 0
+                recordingStatusLabel.text = "processing..."
+                let when = DispatchTime.now() + 1 // change 2 to desired number of seconds
+                DispatchQueue.main.asyncAfter(deadline: when) { [weak self] in
+                    self?.recordingStatusLabel.text = ""
+                    self?.recordButton.alpha = 1
+                    self?.instructionsLabel.text = "whoops, try again."
+                    self?.clickCount += 1
+                }
             case 2:
                 recordingStatusLabel.text = "you're live!"
                 recordButton.alpha = 0.3
@@ -40,9 +46,19 @@ class LessonViewController: UIViewController {
             case 3:
                 recordButton.alpha = 0
                 recordingStatusLabel.text = "processing..."
-                sleep(1)
-                recordingStatusLabel.text = "Success!"
-                // go to success screen
+                let when = DispatchTime.now() + 1 // change 2 to desired number of seconds
+                DispatchQueue.main.asyncAfter(deadline: when) { [weak self] in
+                    self?.recordingStatusLabel.text = ""
+                    self?.recordButton.alpha = 1
+                    self?.instructionsLabel.text = "success!"
+                    self?.clickCount += 1
+                    self?.lesson?.completed = true
+                    let when = DispatchTime.now() + 1
+                    DispatchQueue.main.asyncAfter(deadline: when) { [weak self] in
+                        self?.performSegue(withIdentifier: "showLessonCompletedSegue", sender: self)
+                    }
+                }
+
             default:
                 clickCount = 0
         }
