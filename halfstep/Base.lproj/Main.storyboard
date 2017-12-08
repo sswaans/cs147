@@ -333,12 +333,15 @@
                                                 <constraint firstAttribute="width" constant="60" id="Txw-oY-drK"/>
                                             </constraints>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWI-gc-bSW" userLabel="applaudButton">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWI-gc-bSW" userLabel="deleteButton">
                                             <rect key="frame" x="337" y="12" width="27" height="35"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="27" id="pc3-bS-ygY"/>
                                             </constraints>
                                             <state key="normal" image="trashIcon"/>
+                                            <connections>
+                                                <action selector="deleteFriend:" destination="f8o-Ma-MwC" eventType="touchUpInside" id="c88-ud-BSr"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stefan Swaans" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfO-XX-udi" userLabel="nameLabel">
                                             <rect key="frame" x="85" y="5" width="113" height="49"/>
