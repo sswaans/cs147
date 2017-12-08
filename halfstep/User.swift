@@ -84,9 +84,11 @@ class User: NSManagedObject {
             }
             else if currentUsers.count == 0 {
                 let currentUser = User(context: context)
+                let goalData = GoalData.getSharedInstance()
+                
                 currentUser.setValue("Stefan Swaans", forKey: "name")
-                currentUser.setValue(nil, forKey: "currentGoal")
-                currentUser.setValue(nil, forKey: "currentLesson")
+                currentUser.setValue(goalData.getGoalObjByGoalID(goalID: 0), forKey: "currentGoal")
+                currentUser.setValue(goalData.getLessonObjById(lessonID: 1), forKey: "currentLesson")
                 currentUser.setValue(nil, forKey: "goals")
                 currentUser.setValue(nil, forKey: "friends")
                 currentUser.setValue(nil, forKey: "allUserEvents")

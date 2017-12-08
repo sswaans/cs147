@@ -15,8 +15,9 @@ class GoalData {
     private var goals: [Goal]
     private var allLessons: [Lesson]
     private init() {
-        getAllLessons()
+        allLessons = [Lesson]()
         goals = []
+        getAllLessons()
         let goalDictionaryArray = [["description": "Anything but boring, mastering the seven noted wonders at the heart of western music will open up your musical world, from Brahams to the Beatles.",
                                     "iconPath": "",
                                     "id": 0,
@@ -65,52 +66,52 @@ class GoalData {
         let lessonDictionaryArray = [["parent_goal": "Play all major scales",
                                       "completed": true,
                                       "id": 0,
-                                      "name": "Play the first 5 notes",
+                                      "name": "first 5 notes",
                                       "xpPoints": 10.0],
                                      ["parent_goal": "Play all major scales",
                                       "completed": false,
                                       "id": 1,
-                                      "name": "Play the last 3 notes",
+                                      "name": "last 3 notes",
                                       "xpPoints": 10.0],
                                      ["parent_goal": "Play all major scales",
                                       "completed": false,
                                       "id": 2,
-                                      "name": "Put it all together",
+                                      "name": "single octave",
                                       "xpPoints": 10.0],
                                      ["parent_goal": "Play all major scales",
                                       "completed": false,
                                       "id": 3,
-                                      "name": "Connect multiple octaves",
+                                      "name": "multiple octaves",
                                       "xpPoints": 10.0],
                                      ["parent_goal": "Play all major scales",
                                       "completed": false,
                                       "id": 4,
-                                      "name": "Uncover the whole and half step formula underneath",
+                                      "name": "diatonic scales",
                                       "xpPoints": 10.0],
                                      ["parent_goal": "Play all minor scales",
                                       "completed": false,
                                       "id": 5,
-                                      "name": "Play the first 5 notes",
+                                      "name": "first 5 notes",
                                       "xpPoints": 10.0],
                                      ["parent_goal": "Play all minor scales",
                                       "completed": false,
                                       "id": 6,
-                                      "name": "Play the last 3 notes",
+                                      "name": "last 3 notes",
                                       "xpPoints": 10.0],
                                      ["parent_goal": "Play all minor scales",
                                       "completed": false,
                                       "id": 7,
-                                      "name": "Put it all together",
+                                      "name": "single octave",
                                       "xpPoints": 10.0],
                                      ["parent_goal": "Play all minor scales",
                                       "completed": false,
                                       "id": 8,
-                                      "name": "Connect multiple octaves",
+                                      "name": "multiple octaves",
                                       "xpPoints": 10.0],
                                      ["parent_goal": "Play all minor scales",
                                       "completed": false,
                                       "id": 9,
-                                      "name": "Uncover the whole and half step formula underneath",
+                                      "name": "diatonic scales",
                                       "xpPoints": 10.0],
                                      ["parent_goal": "Use tri-tone substitution in jazz",
                                       "completed": false,
@@ -142,19 +143,22 @@ class GoalData {
                                       "id": 15,
                                       "name": "Tritone substitute in a ii-V-I",
                                       "xpPoints": 10.0]]
-        for lessonDict in lessonDictionaryArray {
+        for index in 0...lessonDictionaryArray.count - 1 {
+            let lessonDict = lessonDictionaryArray[index]
             let lessonEntity = NSEntityDescription.entity(forEntityName: "Lesson", in: AppDelegate.viewContext)
             let lessonObj = Lesson(entity: lessonEntity!, insertInto: AppDelegate.viewContext)
             lessonObj.completed = lessonDict["completed"] as! Bool
             lessonObj.name = lessonDict["name"] as? String
             lessonObj.xpPoints = lessonDict["xpPoints"] as! Double
+            lessonObj.id = Int32(lessonDict["id"] as! Int)
             allLessons.append(lessonObj)
         }
     }
     
     private func createLessonsForGoal(lessonIDs: [Int]) -> [Lesson] {
         var lessons = [Lesson]()
-        for lessonID in lessonIDs {
+        for index in 0...lessonIDs.count - 1 {
+            let lessonID = lessonIDs[index]
             lessons.append(allLessons[lessonID]) // HACK: they're ordered by id 0 to 15
         }
         return lessons

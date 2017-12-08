@@ -33,10 +33,6 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
         GoalData.getSharedInstance()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     /*
     // MARK: - Navigation
@@ -99,7 +95,6 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
             collectionView.addSubview(goalLabel)
             goalLabel.frame = CGRect(x: goalCell.frame.minX, y: goalCell.frame.maxY + 10, width: goalCell.frame.width, height: 20)
             goalLabel.textAlignment = NSTextAlignment.center
-            goalLabel.frame.origin = CGPoint(x: goalCell.frame.minX, y: goalCell.frame.maxY)
             goalLabel.adjustsFontSizeToFitWidth = true
             goalCell.goalLabel = goalLabel
             
