@@ -32,7 +32,6 @@ class FriendsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print ("tralala \(friends.count)")
         return friends.count
     }
 

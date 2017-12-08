@@ -88,6 +88,7 @@ class User: NSManagedObject {
                 
                 currentUser.setValue("Stefan Swaans", forKey: "name")
                 currentUser.setValue(goalData.getGoalObjByGoalID(goalID: 0), forKey: "currentGoal")
+                currentUser.currentGoal?.level = 2
                 currentUser.setValue(goalData.getLessonObjById(lessonID: 1), forKey: "currentLesson")
                 var userGoals = [Goal]()
                 userGoals.append(goalData.getGoalObjByGoalID(goalID: 0))

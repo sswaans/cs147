@@ -156,7 +156,6 @@ class LessonsCollectionViewController: UICollectionViewController {
     
     private func getTotalIndex(ofPath indexPath: IndexPath) -> Int {
         var result = GoalData.getSharedInstance().getFirstLessonID(forGoalID: (currentGoal?.id)!)
-        print(result)
         result += indexPath.item
         if indexPath.section > 0 {
             for section in 0...indexPath.section - 1 {

@@ -246,7 +246,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="search"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O28-JU-2G8">
-                                <rect key="frame" x="0.0" y="20" width="375" height="485"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="505"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addFriendCell" rowHeight="65" id="gbN-Rf-yz9" customClass="AddFriendTableViewCell" customModule="halfstep" customModuleProvider="target">
@@ -309,7 +309,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zal-wp-rOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3703" y="390"/>
+            <point key="canvasLocation" x="3697" y="420"/>
         </scene>
         <!--Friends-->
         <scene sceneID="gqI-J3-5zE">
@@ -324,7 +324,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f8o-Ma-MwC" id="SFy-v4-yA5">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zRe-89-XPw">
@@ -387,8 +387,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="minor scales" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbr-8c-FEf" userLabel="Goal name">
-                                <rect key="frame" x="65" y="20" width="170" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="minor scales" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbr-8c-FEf" userLabel="Goal name">
+                                <rect key="frame" x="16" y="20" width="268" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="37"/>
                                 <nil key="textColor"/>
@@ -441,7 +441,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5uV-eS-3QY" id="cmJ-SO-v9Y">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X9W-7Y-uex" userLabel="messageButton">
@@ -501,7 +501,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dGs-KI-SuA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3546" y="-114"/>
+            <point key="canvasLocation" x="2798" y="-73"/>
         </scene>
         <!--Entry Page-->
         <scene sceneID="IEr-pj-WrH">
@@ -635,9 +635,26 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lg0-ww-jjr" userLabel="levelLabel">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <fontDescription key="fontDescription" name="EuphemiaUCAS-Bold" family="Euphemia UCAS" pointSize="45"/>
+                                                    <nil key="textColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.052702127309999999" green="0.59780574360000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" red="0.052702127309999999" green="0.59780574360000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="Lg0-ww-jjr" firstAttribute="top" secondItem="24q-W7-NHB" secondAttribute="top" id="3Ww-zc-YqG"/>
+                                            <constraint firstItem="Lg0-ww-jjr" firstAttribute="leading" secondItem="24q-W7-NHB" secondAttribute="leading" id="RuZ-oJ-LzM"/>
+                                            <constraint firstAttribute="trailing" secondItem="Lg0-ww-jjr" secondAttribute="trailing" id="esn-6p-mVS"/>
+                                            <constraint firstAttribute="bottom" secondItem="Lg0-ww-jjr" secondAttribute="bottom" id="zIx-qj-Grr"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="levelLabel" destination="Lg0-ww-jjr" id="Ejf-0h-rSj"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
