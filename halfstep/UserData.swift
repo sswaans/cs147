@@ -180,5 +180,13 @@ class UserData {
         return users
     }
     
+    public func getNotFriends() -> [User] {
+        var notFriends = [User]()
+        for i in 6..<10 {
+            notFriends.append(users[i])
+        }
+        return notFriends
+    }
+    
 }
 
