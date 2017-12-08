@@ -63,7 +63,7 @@ class GoalData {
     private func createLessonsForGoal(lessonIDs: [Int]) -> [Lesson] {
         var lessons = [Lesson]()
         let lessonDictionaryArray = [["parent_goal": "Play all major scales",
-                                      "completed": false,
+                                      "completed": true,
                                       "id": 0,
                                       "name": "Play the first 5 notes",
                                       "xpPoints": 10.0],
