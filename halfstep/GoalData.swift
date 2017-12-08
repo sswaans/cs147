@@ -7,14 +7,15 @@
 //
 
 import Foundation
+import CoreData
 
 class GoalData {
     
     private static let sharedInstance = GoalData()
     private var goals: [Goal]
     private init() {
-        goals = [] // David please create a bunch of goal objects and put them in
-        var goalDictionaryArray = [["description": "Anything but boring, mastering the seven noted wonders at the heart of western music will open up your musical world, from Brahams to the Beatles.",
+        goals = []
+        let goalDictionaryArray = [["description": "Anything but boring, mastering the seven noted wonders at the heart of western music will open up your musical world, from Brahams to the Beatles.",
                                     "iconPath": "",
                                     "id": 0,
                                     "lessons": [0, 1, 2, 3, 4],
@@ -40,15 +41,19 @@ class GoalData {
                                     "progressRequired": 100]]
         
         for goalDict in goalDictionaryArray {
-            var lessons = [Lesson]
-            createLessonsForGoal(goalDict.lessons, &lessons);
-            var goalObj = Goal(goalName: goalObj.name, goalLessons: lessons, goalDescription: goalDict.description, goalIconPath: goalDict.iconPath)
+            let lessons = createLessonsForGoal(lessonIDs: goalDict["lessons"] as! [Int]);
+            let goalEntity = NSEntityDescription.entity(forEntityName: "Goal", in: AppDelegate.viewContext)
+            let goalObj = Goal(entity: goalEntity!, insertInto: AppDelegate.viewContext)
+            goalObj.name = goalDict["name"] as? String
+            goalObj.lessons = NSSet(array: lessons)
+            goalObj.goalDescription = goalDict["description"] as? String
             goals.append(goalObj)
         }
     }
     
-    private func createLessonsForGoal(lessonIDs: [Int], lessons: inout [Lesson]) {
-        var lessonDictionaryArray = [["parent_goal": "Play all major scales",
+    private func createLessonsForGoal(lessonIDs: [Int]) -> [Lesson] {
+        var lessons = [Lesson]()
+        let lessonDictionaryArray = [["parent_goal": "Play all major scales",
                                       "completed": false,
                                       "id": 0,
                                       "name": "Play the first 5 notes",
@@ -128,11 +133,15 @@ class GoalData {
                                       "id": 5,
                                       "name": "Tritone substitute in a ii-V-I",
                                       "xpPoints": 10]]
-        for lessonID in lessonIDs {
-            var lessonDict = lessonDictionaryArray[lessonID] // they're sorted by ID 0 through n
-            var lessonObj = Lesson(completed: lessonDict.completed, name: lessonDict.name, xpPoints: lessonDict.xpPoints)
+        for lessonDict in lessonDictionaryArray {
+            let lessonEntity = NSEntityDescription.entity(forEntityName: "Lesson", in: AppDelegate.viewContext)
+            let lessonObj = Lesson(entity: lessonEntity!, insertInto: AppDelegate.viewContext)
+            lessonObj.completed = lessonDict["completed"] as! Bool
+            lessonObj.name = lessonDict["name"] as? String
+            lessonObj.xpPoints = lessonDict["xpPoints"] as! Double
             lessons.append(lessonObj)
         }
+        return lessons
     }
     
     public static func getSharedInstance() -> GoalData {
