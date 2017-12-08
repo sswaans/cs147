@@ -13,7 +13,9 @@ class GoalData {
     
     private static let sharedInstance = GoalData()
     private var goals: [Goal]
+    private var allLessons: [Lesson]
     private init() {
+        getAllLessons()
         goals = []
         let goalDictionaryArray = [["description": "Anything but boring, mastering the seven noted wonders at the heart of western music will open up your musical world, from Brahams to the Beatles.",
                                     "iconPath": "",
@@ -59,9 +61,7 @@ class GoalData {
         
     }
 
-    
-    private func createLessonsForGoal(lessonIDs: [Int]) -> [Lesson] {
-        var lessons = [Lesson]()
+    private func getAllLessons() {
         let lessonDictionaryArray = [["parent_goal": "Play all major scales",
                                       "completed": false,
                                       "id": 0,
@@ -114,42 +114,48 @@ class GoalData {
                                       "xpPoints": 10.0],
                                      ["parent_goal": "Use tri-tone substitution in jazz",
                                       "completed": false,
-                                      "id": 0,
+                                      "id": 10,
                                       "name": "Play ii-V-I",
                                       "xpPoints": 10.0],
                                      ["parent_goal": "Use tri-tone substitution in jazz",
                                       "completed": false,
-                                      "id": 1,
+                                      "id": 11,
                                       "name": "What is a tritone?",
                                       "xpPoints": 10.0],
                                      ["parent_goal": "Use tri-tone substitution in jazz",
                                       "completed": false,
-                                      "id": 2,
+                                      "id": 12,
                                       "name": "Stripping down to thirds and sevenths",
                                       "xpPoints": 10.0],
                                      ["parent_goal": "Use tri-tone substitution in jazz",
                                       "completed": false,
-                                      "id": 3,
+                                      "id": 13,
                                       "name": "Find the matching dominant chord",
                                       "xpPoints": 10.0],
                                      ["parent_goal": "Use tri-tone substitution in jazz",
                                       "completed": false,
-                                      "id": 4,
+                                      "id": 14,
                                       "name": "Tritone substitute",
                                       "xpPoints": 10.0],
                                      ["parent_goal": "Use tri-tone substitution in jazz",
                                       "completed": false,
-                                      "id": 5,
+                                      "id": 15,
                                       "name": "Tritone substitute in a ii-V-I",
                                       "xpPoints": 10.0]]
-        for index in 0...lessonIDs.count - 1 {
-            let lessonDict = lessonDictionaryArray[index]
+        for lessonDict in lessonDictionaryArray {
             let lessonEntity = NSEntityDescription.entity(forEntityName: "Lesson", in: AppDelegate.viewContext)
             let lessonObj = Lesson(entity: lessonEntity!, insertInto: AppDelegate.viewContext)
             lessonObj.completed = lessonDict["completed"] as! Bool
             lessonObj.name = lessonDict["name"] as? String
             lessonObj.xpPoints = lessonDict["xpPoints"] as! Double
-            lessons.append(lessonObj)
+            allLessons.append(lessonObj)
+        }
+    }
+    
+    private func createLessonsForGoal(lessonIDs: [Int]) -> [Lesson] {
+        var lessons = [Lesson]()
+        for lessonID in lessonIDs {
+            lessons.append(allLessons[lessonID]) // HACK: they're ordered by id 0 to 15
         }
         return lessons
     }
@@ -164,6 +170,10 @@ class GoalData {
     
     public func getArrayOfAllGoalObjects() -> [Goal] {
         return goals
+    }
+    
+    public func getLessonObjById(lessonID: Int) -> Lesson {
+        return allLessons[lessonID]
     }
     
 }
