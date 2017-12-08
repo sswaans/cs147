@@ -81,14 +81,19 @@ class LessonsCollectionViewController: UICollectionViewController {
         cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.layer.cornerRadius).cgPath
         
         if let lessonCell = cell as? LessonsCollectionViewCell {
-            switch <#value#> {
-            case <#pattern#>:
-                <#code#>
-            default:
-                <#code#>
+            do {
+                try 
+            } catch {
+                
+            }
+            lessonCell.lesson =
+            if (lessonCell.lesson?.completed)! {
+                cell.backgroundColor = UIColor(red: 1.0, green: 226.0/255.0, blue: 81.0/255.0, alpha: 1.0)
+            }
+            else if lessonCell.lesson != user?.currentLesson {
+                cell.backgroundColor = UIColor.gray
             }
         }
-        cell.backgroundColor = UIColor(red: 1.0, green: 226.0/255.0, blue: 81.0/255.0, alpha: 1.0)
     
         return cell
     }
