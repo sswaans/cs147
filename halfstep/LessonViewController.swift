@@ -11,24 +11,39 @@ import UIKit
 class LessonViewController: UIViewController {
 
 
+    @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var recordingStatusLabel: UILabel!
     @IBOutlet weak var recordButton: UIButton!
-    var isRecording = false
+    var clickCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
    
     }
+    
     @IBAction func recordButtonPressed(_ sender: UIButton) {
-        if (isRecording) {
-            recordingStatusLabel.text = "record"
-            recordButton.alpha = 1
-            isRecording = false
-            
-        } else {
-            recordingStatusLabel.text = "recording..."
-            recordButton.alpha = 0.3
-            isRecording = true
+        switch(clickCount) {
+            case 0:
+                recordingStatusLabel.text = "recording..."
+                recordButton.alpha = 0.3
+                clickCount += 1
+            case 1:
+                recordingStatusLabel.text = "almost. try again!"
+                recordButton.alpha = 1
+                instructionsLabel.text = "Whoops, try again."
+                clickCount += 1
+            case 2:
+                recordingStatusLabel.text = "you're live!"
+                recordButton.alpha = 0.3
+                clickCount += 1
+            case 3:
+                recordButton.alpha = 0
+                recordingStatusLabel.text = "processing..."
+                sleep(1)
+                recordingStatusLabel.text = "Success!"
+                // go to success screen
+            default:
+                clickCount = 0
         }
     }
     
