@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class UserData {
     
@@ -24,7 +25,7 @@ class UserData {
                                    "jayz": 11]
     private init() {
         users = []
-        var userDictionaryArray = [["allUserEvents": ["practiced for 30 minutes today", "practiced for 23 minutes yesterday", "achieved Level 3 in Play All Major Scales", "set a new goal: Play All Minor Scales", "became friends with beyonce", "became friends with jayz"],
+        let userDictionaryArray = [["allUserEvents": ["practiced for 30 minutes today", "practiced for 23 minutes yesterday", "achieved Level 3 in Play All Major Scales", "set a new goal: Play All Minor Scales", "became friends with beyonce", "became friends with jayz"],
                                     "currentGoal": 0,
                                     "currentLesson": 0,
                                     "friends": ["khoi", "andrew", "beyonce", "jayz"],
@@ -124,9 +125,11 @@ class UserData {
                                     "name": "jayz"]]
         
         for userDict in userDictionaryArray {
-            var userObj = User(name: userDict["name"] as! String, currentGoal: userDict["currentGoal"] as! Int, currentLesson: userDict["currentLesson"] as! Int,
-                               goals: userDict["goals"] as! [Int], friends: userDict["friends"] as! [String],  userDict["allUserEvents"]: nil,
-                                id: userDict["id"] as! Int)
+            let userEntity = NSEntityDescription.entity(forEntityName: "User", in: AppDelegate.viewContext)
+            let userObj = User(entity: userEntity!, insertInto: AppDelegate.viewContext)
+            userObj.name = userDict["name"] as? String
+            userObj.currentGoal = userDict["currentGoal"] as? Goal
+            userObj.currentLesson = userDict["currentLesson"] as? Lesson
             users.append(userObj)
         }
     }
