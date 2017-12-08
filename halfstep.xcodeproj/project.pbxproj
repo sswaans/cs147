@@ -35,6 +35,7 @@
 		F1ADCC1D1FBF91F000DCB57A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1ADCC1B1FBF91F000DCB57A /* Main.storyboard */; };
 		F1ADCC1F1FBF91F000DCB57A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1ADCC1E1FBF91F000DCB57A /* Assets.xcassets */; };
 		F1ADCC221FBF91F000DCB57A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1ADCC201FBF91F000DCB57A /* LaunchScreen.storyboard */; };
+		F1FE4E341FDB309200FC8208 /* LessonCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FE4E331FDB309200FC8208 /* LessonCompletedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		F1ADCC1E1FBF91F000DCB57A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1ADCC211FBF91F000DCB57A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1ADCC231FBF91F000DCB57A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1FE4E331FDB309200FC8208 /* LessonCompletedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonCompletedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 			children = (
 				F1405E521FCA386D007F6305 /* Supporting Files */,
 				F1ADCC1B1FBF91F000DCB57A /* Main.storyboard */,
+				F1FE4E331FDB309200FC8208 /* LessonCompletedViewController.swift */,
 				6E908A681FDAB1CA00A9F94D /* AddFriendTableViewController.swift */,
 				6E908A661FDAB15F00A9F94D /* AddFriendTableViewCell.swift */,
 				6E908A621FDAAC3300A9F94D /* FriendTableViewCell.swift */,
@@ -234,6 +237,7 @@
 				F16D8E0F1FCF893600F53040 /* Model.xcdatamodeld in Sources */,
 				6E908A631FDAAC3300A9F94D /* FriendTableViewCell.swift in Sources */,
 				6E57F1AC1FCE9774009132B2 /* Applause.swift in Sources */,
+				F1FE4E341FDB309200FC8208 /* LessonCompletedViewController.swift in Sources */,
 				1BC48F711FDA2A4C000E77E5 /* UserData.swift in Sources */,
 				6E57F1AE1FCE99D8009132B2 /* UserEvent.swift in Sources */,
 				F1405E581FCB8460007F6305 /* SelectGoalViewController.swift in Sources */,

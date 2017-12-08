@@ -27,6 +27,8 @@ class LessonsCollectionViewController: UICollectionViewController {
     
     @IBOutlet weak var navBar: UINavigationItem!
     
+    @IBAction func unwindToLessonsView(segue:UIStoryboardSegue) { }
+    
     var currentGoal: Goal? {
         get {
             if user?.getCurrentGoal() != nil {
