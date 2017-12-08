@@ -93,7 +93,7 @@ class UserData {
                                     "goals": [1],
                                     "id": 8,
                                     "name": "ringostarr",
-                                    "imagePath": "david_mora"],
+                                    "imagePath": "ringo_starr"],
                                    ["allUserEvents": ["practiced for 30 minutes today", "practiced for 23 minutes yesterday", "achieved Level 3 in Play All Major Scales", "set a new goal: Play All Minor Scales", "became friends with beyonce", "became friends with jayz"],
                                     "currentGoal": 1,
                                     "currentLesson": 7,
@@ -117,7 +117,7 @@ class UserData {
                                     "goals": [0, 1],
                                     "id": 10,
                                     "name": "beyonce",
-                                    "imagePath": "david_mora"],
+                                    "imagePath": "beyonce"],
                                    ["allUserEvents": ["practiced for 30 minutes today", "practiced for 23 minutes yesterday", "achieved Level 3 in Play All Major Scales", "set a new goal: Play All Minor Scales", "became friends with beyonce", "became friends with jayz"],
                                     "currentGoal": 2,
                                     "currentLesson": 13,
@@ -133,7 +133,7 @@ class UserData {
                                     "goals": [0, 1],
                                     "id": 11,
                                     "name": "jayz",
-                                    "imagePath": "david_mora"]]
+                                    "imagePath": "jay-z"]]
         
         for userDict in userDictionaryArray {
             let userEntity = NSEntityDescription.entity(forEntityName: "User", in: AppDelegate.viewContext)
@@ -192,7 +192,7 @@ class UserData {
     
     public func getNotFriends() -> [User] {
         var notFriends = [User]()
-        for i in 6..<10 {
+        for i in 5..<8 {
             notFriends.append(users[i])
         }
         return notFriends

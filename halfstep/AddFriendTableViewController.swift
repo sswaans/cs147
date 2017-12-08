@@ -98,6 +98,6 @@ class AddFriendTableViewController: UIViewController, UITableViewDelegate, UITab
     
     // MARK: - Private Methods
     private func loadNotFriends(){
-        notFriendsYet += UserData.getSharedInstance().getUserObjByUserID(userID: 2).friends?.allObjects as! [User]
+        notFriendsYet += UserData.getSharedInstance().getNotFriends()
     }
 }
