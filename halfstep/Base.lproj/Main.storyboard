@@ -210,7 +210,7 @@
                         <viewControllerLayoutGuide type="top" id="BIa-5V-c0D"/>
                         <viewControllerLayoutGuide type="bottom" id="qKf-6o-KhL"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yuA-5L-thg">
+                    <view key="view" contentMode="scaleToFill" id="yuA-5L-thg" customClass="AddFriendTableViewCell" customModule="halfstep" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="505"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -348,7 +348,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1iT-yZ-adO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2844" y="389.95502248875567"/>
+            <point key="canvasLocation" x="2799" y="420"/>
         </scene>
         <!--Select Goal-->
         <scene sceneID="HEl-f0-oBC">

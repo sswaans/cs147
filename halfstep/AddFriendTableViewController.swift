@@ -19,6 +19,7 @@ class AddFriendTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        loadNotFriends()
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,7 +39,7 @@ class AddFriendTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "FriendTableViewCell"
+        let cellIdentifier = "addFriendCell"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? FriendTableViewCell else {
             fatalError("NOT FRIENDS")
         }
@@ -98,6 +99,6 @@ class AddFriendTableViewController: UITableViewController {
     
     // MARK: - Private Methods
     private func loadNotFriends(){
-        notFriendsYet += UserData.getSharedInstance().getUserObjByUserID(userID: 0).friends?.allObjects as! [User]
+        notFriendsYet += UserData.getSharedInstance().getUserObjByUserID(userID: 2).friends?.allObjects as! [User]
     }
 }

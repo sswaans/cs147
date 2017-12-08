@@ -49,7 +49,7 @@ class UserData {
                                     "goals": [0, 1],
                                     "id": 4,
                                     "name": "andrew",
-                                    "imagePath": ""],
+                                    "imagePath": "david_mora"],
                                    ["allUserEvents": ["practiced for 30 minutes today", "practiced for 23 minutes yesterday", "achieved Level 3 in Play All Major Scales", "set a new goal: Play All Minor Scales", "became friends with beyonce", "became friends with jayz"],
                                     "currentGoal": 2,
                                     "currentLesson": 11,
@@ -57,7 +57,7 @@ class UserData {
                                     "goals": [0, 1],
                                     "id": 5,
                                     "name": "james",
-                                    "imagePath": ""],
+                                    "imagePath": "david_mora"],
                                    ["allUserEvents": ["practiced for 30 minutes today", "practiced for 23 minutes yesterday", "achieved Level 3 in Play All Major Scales", "set a new goal: Play All Minor Scales", "became friends with beyonce", "became friends with jayz"],
                                     "currentGoal": 0,
                                     "currentLesson": 2,
@@ -69,7 +69,7 @@ class UserData {
                                     "goals": [1, 2],
                                     "id": 6,
                                     "name": "johnlennon",
-                                    "imagePath": ""],
+                                    "imagePath": "david_mora"],
                                    ["allUserEvents": ["practiced for 30 minutes today", "practiced for 23 minutes yesterday", "achieved Level 3 in Play All Major Scales", "set a new goal: Play All Minor Scales", "became friends with beyonce", "became friends with jayz"],
                                     "currentGoal": 0,
                                     "currentLesson": 3,
@@ -81,7 +81,7 @@ class UserData {
                                     "goals": [1, 2],
                                     "id": 7,
                                     "name": "paulmccartney",
-                                    "imagePath": ""],
+                                    "imagePath": "david_mora"],
                                    ["allUserEvents": ["practiced for 30 minutes today", "practiced for 23 minutes yesterday", "achieved Level 3 in Play All Major Scales", "set a new goal: Play All Minor Scales", "became friends with beyonce", "became friends with jayz"],
                                     "currentGoal": 1,
                                     "currentLesson": 6,
@@ -93,7 +93,7 @@ class UserData {
                                     "goals": [1],
                                     "id": 8,
                                     "name": "ringostarr",
-                                    "imagePath": ""],
+                                    "imagePath": "david_mora"],
                                    ["allUserEvents": ["practiced for 30 minutes today", "practiced for 23 minutes yesterday", "achieved Level 3 in Play All Major Scales", "set a new goal: Play All Minor Scales", "became friends with beyonce", "became friends with jayz"],
                                     "currentGoal": 1,
                                     "currentLesson": 7,
@@ -101,7 +101,7 @@ class UserData {
                                     "goals": [1],
                                     "id": 9,
                                     "name": "georgeharrison",
-                                    "imagePath": ""],
+                                    "imagePath": "david_mora"],
                                    ["allUserEvents": ["practiced for 30 minutes today", "practiced for 23 minutes yesterday", "achieved Level 3 in Play All Major Scales", "set a new goal: Play All Minor Scales", "became friends with beyonce", "became friends with jayz"],
                                     "currentGoal": 2,
                                     "currentLesson": 12,
@@ -117,7 +117,7 @@ class UserData {
                                     "goals": [0, 1],
                                     "id": 10,
                                     "name": "beyonce",
-                                    "imagePath": ""],
+                                    "imagePath": "david_mora"],
                                    ["allUserEvents": ["practiced for 30 minutes today", "practiced for 23 minutes yesterday", "achieved Level 3 in Play All Major Scales", "set a new goal: Play All Minor Scales", "became friends with beyonce", "became friends with jayz"],
                                     "currentGoal": 2,
                                     "currentLesson": 13,
@@ -133,7 +133,7 @@ class UserData {
                                     "goals": [0, 1],
                                     "id": 11,
                                     "name": "jayz",
-                                    "imagePath": ""]]
+                                    "imagePath": "david_mora"]]
         
         for userDict in userDictionaryArray {
             let userEntity = NSEntityDescription.entity(forEntityName: "User", in: AppDelegate.viewContext)
@@ -142,8 +142,17 @@ class UserData {
             userObj.currentGoal   = goalData.getGoalObjByGoalID(goalID: (userDict["currentGoal"] as? Int)!)
             userObj.currentLesson = goalData.getLessonObjById(lessonID: (userDict["currentLesson"] as? Int)!)
             userObj.allUserEvents = NSSet(array: createUserEvents(eventStrings: (userDict["allUserEvents"] as! [String])))
-            
+            userObj.imagePath     = userDict["imagePath"] as? String
             users.append(userObj)
+        }
+        
+        // Now that users are created, link em up via friends lists
+        for index in 0..<users.count {
+            var friendsObjects = [User]()
+            for friendName in (userDictionaryArray[index]["friends"] as! [String]) {
+                friendsObjects.append(getUserObjByUserName(userName: friendName))
+            }
+            users[index].friends = NSSet(array: friendsObjects)
         }
         
         do {
@@ -173,6 +182,7 @@ class UserData {
     }
     
     public func getUserObjByUserName(userName: String) -> User {
+        print(userNameToIdMap[userName], users)
         return users[userNameToIdMap[userName]! - 2] // HACK: they'r sorted by ID starting at id = 2
     }
     

@@ -45,7 +45,7 @@ class NewsTableViewController: UITableViewController {
         }
         let user = users[indexPath.row]
         let userEvent = user.allUserEvents?.anyObject() as! UserEvent
-        cell.messageLabel.text = userEvent.content
+        cell.messageLabel.text = user.name! + " " + userEvent.content!
         cell.profileImageView.image = UIImage(named: user.imagePath!)
         // Configure the cell...
 
@@ -100,13 +100,7 @@ class NewsTableViewController: UITableViewController {
     
     // MARK: Private functions
     private func loadNews(){
-        users += UserData.getSharedInstance().getArrayOfAllUserObjects()
-        for user in users {
-            let event = user.allUserEvents?.anyObject() as! UserEvent
-            let message = event.content
-            let randomUserNews = user.name! + " " + message!
-            newsItems.append(randomUserNews)
-        }
+        users += UserData.getSharedInstance().getUserObjByUserID(userID: 2).friends?.allObjects as! [User]
     }
 
 }

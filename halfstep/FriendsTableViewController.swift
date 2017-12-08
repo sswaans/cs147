@@ -32,12 +32,13 @@ class FriendsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print ("tralala \(friends.count)")
         return friends.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "FriendTableViewCell"
+        let cellIdentifier = "friendCell"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? FriendTableViewCell else {
             fatalError("Not a FriendTableViewCell")
         }
@@ -97,7 +98,7 @@ class FriendsTableViewController: UITableViewController {
     
     // MARK: Private Methods
     private func loadFriends() {
-        friends += UserData.getSharedInstance().getUserObjByUserID(userID: 0).friends?.allObjects as! [User]
+        friends += UserData.getSharedInstance().getUserObjByUserID(userID: 2).friends?.allObjects as! [User]
     }
 
 }
