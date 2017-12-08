@@ -132,6 +132,12 @@ class UserData {
             userObj.currentLesson = userDict["currentLesson"] as? Lesson
             users.append(userObj)
         }
+        
+        do {
+            try AppDelegate.viewContext.save()
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
     }
     
     public static func getSharedInstance() -> UserData {

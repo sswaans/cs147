@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 private let reuseIdentifier = "goalCell"
 
@@ -19,6 +20,8 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     private var selectedGoal: Goal?
     
+    let context = AppDelegate.persistentContainer.viewContext
+    
     fileprivate var itemsPerRow = 3
     fileprivate var insets = UIEdgeInsets(top: 0, left: 20.0, bottom: 50.0, right: 20.0)
 
@@ -27,6 +30,7 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
         goalsCollectionView.dataSource = self
         goalsCollectionView.delegate = self
         user = User.getCurrentUser()
+        GoalData.getSharedInstance()
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,9 +60,9 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
         case 0:
             return 1
         case 1:
-            return 5
+            return 1
         case 2:
-            return 3
+            return 1
         default:
             return 0
         }
@@ -94,22 +98,43 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
             goalLabel.text = "goal name"
             goalLabel.font = UIFont(name: "AvenirNextCondensed-Regular", size: 17.0)
             collectionView.addSubview(goalLabel)
-            goalLabel.frame = CGRect(x: goalCell.frame.minX, y: goalCell.frame.maxY, width: goalCell.frame.width, height: 20)
+            goalLabel.frame = CGRect(x: goalCell.frame.minX, y: goalCell.frame.maxY + 10, width: goalCell.frame.width, height: 20)
             goalLabel.textAlignment = NSTextAlignment.center
-            //goalLabel.sizeToFit()
             goalLabel.frame.origin = CGPoint(x: goalCell.frame.minX, y: goalCell.frame.maxY)
+            goalLabel.adjustsFontSizeToFitWidth = true
             goalCell.goalLabel = goalLabel
+            
+            do {
+                let request: NSFetchRequest<Goal> = Goal.fetchRequest()
+                request.predicate = NSPredicate(format: "id = %d", getTotalIndex(ofPath: indexPath))
+                let goals = try context.fetch(request)
+                goalCell.goal = goals[0]
+                goalLabel.text = goalCell.goal?.getName()
+            } catch {
+                // do nothing ;)
+                // sometimes i like to bury myself in the backyard and pretend im a carrot -<)=
+            }
+
         }
     
         return cell
+    }
+    
+    private func getTotalIndex(ofPath indexPath: IndexPath) -> Int {
+        var result = 0
+        result += indexPath.item
+        if indexPath.section > 0 {
+            for section in 0...indexPath.section - 1 {
+                result += goalsCollectionView.numberOfItems(inSection: section)
+            }
+        }
+        return result
     }
 
     // MARK: UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Selected item at indexPath: \(indexPath)")
         let cell = goalsCollectionView.cellForItem(at: indexPath) as! GoalCollectionViewCell
-        print("goal name: \(String(describing: cell.goal?.getName()))")
         switch indexPath.section {
         case 0:
             user?.setCurrentGoal(goalToSet: cell.goal!)
