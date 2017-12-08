@@ -76,6 +76,7 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
         cell.layer.shadowOpacity = 0.75
         cell.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
         cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.layer.cornerRadius).cgPath
+        cell.backgroundView = UIImageView(image: #imageLiteral(resourceName: "noteIcon"))
         
         switch indexPath.section {
         case 0:

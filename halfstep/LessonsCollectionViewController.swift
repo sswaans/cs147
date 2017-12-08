@@ -54,15 +54,12 @@ class LessonsCollectionViewController: UICollectionViewController {
         navBar.title = currentGoal?.name
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "showLessonSegue"){
+            let lessonController = segue.destination as! LessonViewController
+            // TODO: If we set up specific lesson stuff, it should happen here.
+        }
     }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -87,6 +84,7 @@ class LessonsCollectionViewController: UICollectionViewController {
         cell.layer.shadowOpacity = 0.75
         cell.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
         cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.layer.cornerRadius).cgPath
+        cell.backgroundView = UIImageView(image: #imageLiteral(resourceName: "noteIcon"))
         
         if let lessonCell = cell as? LessonsCollectionViewCell {
             let lessonLabel = UILabel()
@@ -135,7 +133,12 @@ class LessonsCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let cell = collectionView.cellForItem(at: indexPath) as! LessonCollectionViewCell
+        let cell = collectionView.cellForItem(at: indexPath)
+        if let lessonCell = cell as? LessonsCollectionViewCell {
+            if (lessonCell.lesson?.completed)! || lessonCell.lesson == user?.currentLesson {
+                performSegue(withIdentifier: "showLessonSegue", sender: self)
+            }
+        }
     }
     
 }

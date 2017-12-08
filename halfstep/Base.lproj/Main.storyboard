@@ -70,6 +70,7 @@
                     <connections>
                         <outlet property="lessonsCollectionView" destination="6gM-vZ-kxq" id="s3j-Ai-EKP"/>
                         <outlet property="navBar" destination="4HH-jW-T0X" id="QaM-22-D78"/>
+                        <segue destination="cKM-8H-hgI" kind="show" identifier="showLessonSegue" id="yoJ-6S-X8q"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IPN-Gs-dpQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -88,34 +89,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="hit record, then play these notes." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvv-RG-seG">
-                                <rect key="frame" x="0.0" y="100" width="375" height="131"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="40"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cMajorScaleIcon" translatesAutoresizingMaskIntoConstraints="NO" id="uDS-vU-9nL">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cMajorScaleIcon" translatesAutoresizingMaskIntoConstraints="NO" id="uDS-vU-9nL">
                                 <rect key="frame" x="67" y="239" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="rgo-TN-B4n"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oc8-3x-2Jl">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oc8-3x-2Jl">
                                 <rect key="frame" x="144" y="517" width="86" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="86" id="Qjd-vQ-xxJ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhi-nz-MCs">
-                                <rect key="frame" x="133" y="405" width="108" height="97"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhi-nz-MCs">
+                                <rect key="frame" x="133" y="412" width="108" height="97"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="97" id="Dqs-j2-PIC"/>
+                                    <constraint firstAttribute="width" constant="108" id="KtP-5z-TIk"/>
+                                </constraints>
                                 <state key="normal" title="Button" image="micIcon"/>
                                 <connections>
                                     <action selector="recordButtonPressed:" destination="cKM-8H-hgI" eventType="touchUpInside" id="S30-vu-a1Z"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hit record, then play these notes." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvv-RG-seG">
+                                <rect key="frame" x="0.0" y="100" width="375" height="131"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="131" id="td6-90-8Rn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xvv-RG-seG" firstAttribute="top" secondItem="S7q-Hz-InJ" secondAttribute="bottom" constant="36" id="KyX-6S-qhj"/>
+                            <constraint firstItem="Oc8-3x-2Jl" firstAttribute="centerX" secondItem="uDS-vU-9nL" secondAttribute="centerX" id="NNo-4U-F6Q"/>
+                            <constraint firstItem="uDS-vU-9nL" firstAttribute="top" secondItem="xvv-RG-seG" secondAttribute="bottom" constant="8" symbolic="YES" id="OAH-Y2-2zx"/>
+                            <constraint firstItem="uDS-vU-9nL" firstAttribute="centerX" secondItem="xvv-RG-seG" secondAttribute="centerX" id="U99-Sk-2Yg"/>
+                            <constraint firstItem="Mxj-Kd-fvn" firstAttribute="top" secondItem="Oc8-3x-2Jl" secondAttribute="bottom" constant="80" id="eNu-K3-vwZ"/>
+                            <constraint firstItem="xvv-RG-seG" firstAttribute="leading" secondItem="dPm-SL-rJ3" secondAttribute="leading" id="h93-zH-s78"/>
+                            <constraint firstItem="Oc8-3x-2Jl" firstAttribute="centerX" secondItem="mhi-nz-MCs" secondAttribute="centerX" id="ntW-g1-mi1"/>
+                            <constraint firstItem="mhi-nz-MCs" firstAttribute="top" secondItem="uDS-vU-9nL" secondAttribute="bottom" constant="45" id="scR-Cr-ksI"/>
+                            <constraint firstItem="uDS-vU-9nL" firstAttribute="leading" secondItem="dPm-SL-rJ3" secondAttribute="leadingMargin" constant="51" id="suT-kC-T8G"/>
+                            <constraint firstItem="Oc8-3x-2Jl" firstAttribute="top" secondItem="mhi-nz-MCs" secondAttribute="bottom" constant="8" symbolic="YES" id="uGw-k7-Cz5"/>
+                            <constraint firstAttribute="trailing" secondItem="xvv-RG-seG" secondAttribute="trailing" id="xNA-IA-2d7"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="recordButton" destination="mhi-nz-MCs" id="y7f-iX-iJz"/>
@@ -234,19 +257,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u8V-2q-g3q">
-                                                    <rect key="frame" x="24" y="2" width="60" height="53.5"/>
+                                                    <rect key="frame" x="17" y="-1" width="60" height="59"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="NO7-dB-SlT"/>
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gys-C4-BVR" userLabel="applaudButton">
-                                                    <rect key="frame" x="330" y="15" width="27" height="29.5"/>
+                                                    <rect key="frame" x="337" y="12" width="27" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="27" id="h6b-zf-3sC"/>
                                                     </constraints>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stefan Swaans" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pba-Th-xfr" userLabel="nameLabel">
-                                                    <rect key="frame" x="92" y="8" width="113" height="42.5"/>
+                                                    <rect key="frame" x="85" y="5" width="113" height="48"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -304,20 +327,20 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zRe-89-XPw">
-                                            <rect key="frame" x="25" y="2" width="60" height="54.5"/>
+                                            <rect key="frame" x="17" y="-1" width="60" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="Txw-oY-drK"/>
                                             </constraints>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWI-gc-bSW" userLabel="applaudButton">
-                                            <rect key="frame" x="329" y="15" width="27" height="29.5"/>
+                                            <rect key="frame" x="337" y="12" width="27" height="35"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="27" id="pc3-bS-ygY"/>
                                             </constraints>
                                             <state key="normal" image="trashIcon"/>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stefan Swaans" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfO-XX-udi" userLabel="nameLabel">
-                                            <rect key="frame" x="93" y="8" width="113" height="43.5"/>
+                                            <rect key="frame" x="85" y="5" width="113" height="49"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -421,27 +444,27 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X9W-7Y-uex" userLabel="messageButton">
-                                            <rect key="frame" x="279" y="17" width="36" height="30"/>
+                                            <rect key="frame" x="287" y="14" width="36" height="36"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="36" id="LXv-G8-Qcy"/>
                                             </constraints>
                                             <state key="normal" image="messageIcon"/>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HqX-cn-ops">
-                                            <rect key="frame" x="25" y="2" width="60" height="54.5"/>
+                                            <rect key="frame" x="17" y="-1" width="60" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="XDw-kK-k8p"/>
                                             </constraints>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQ7-Rg-doo" userLabel="applaudButton">
-                                            <rect key="frame" x="323" y="14" width="36" height="30.5"/>
+                                            <rect key="frame" x="331" y="11" width="36" height="36"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="36" id="Qhe-Jz-UBq"/>
                                             </constraints>
                                             <state key="normal" image="applaudIcon"/>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stefan practiced for 30 minutes today" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFb-Lh-ScH" userLabel="newsLabel">
-                                            <rect key="frame" x="93" y="8" width="178" height="43.5"/>
+                                            <rect key="frame" x="85" y="5" width="194" height="49"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -507,18 +530,6 @@
                                 <state key="normal" title="start"/>
                                 <connections>
                                     <segue destination="49e-Tb-3d3" kind="show" id="CEv-BF-yj9"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8S-Ee-6JE">
-                                <rect key="frame" x="260" y="560" width="84" height="67"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="62" id="QgI-vy-lK1"/>
-                                    <constraint firstAttribute="width" constant="84" id="tAg-f8-Wsl"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="40"/>
-                                <state key="normal" title="david's special button"/>
-                                <connections>
-                                    <segue destination="cKM-8H-hgI" kind="show" id="fI3-KW-zdi"/>
                                 </connections>
                             </button>
                         </subviews>
