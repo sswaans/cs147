@@ -18,7 +18,7 @@ class GoalData {
         allLessons = [Lesson]()
         goals = []
         getAllLessons()
-        let goalDictionaryArray = [["description": "Anything but boring, mastering the seven noted wonders at the heart of western music will open up your musical world, from Brahams to the Beatles.",
+        let goalDictionaryArray = [["description": "anything but boring, mastering the seven noted wonders at the heart of western music will open up your musical world, from brahams to the beatles.",
                                     "iconPath": "",
                                     "id": 0,
                                     "lessons": [0, 1, 2, 3, 4],
@@ -26,7 +26,7 @@ class GoalData {
                                     "name": "major scales",
                                     "progress": 0,
                                     "progressRequired": 100],
-                                   ["description": "Plot twist: what happens when you  start a major scale on its sixth note? Dark and moving, the minor scales will take what you learned from the major scales to the next level",
+                                   ["description": "plot twist: what happens when you start a major scale on its sixth note? dark and moving, the minor scales will take what you learned from the major scales to the next level.",
                                     "iconPath": "",
                                     "id": 1,
                                     "lessons": [5, 6, 7, 8, 9],
@@ -34,7 +34,7 @@ class GoalData {
                                     "name": "minor scales",
                                     "progress": 0,
                                     "progressRequired": 100],
-                                   ["description": "This goal unlocks a sure fire way to spice up any ii-V-I (in othe words, every jazz song ever). Get your mind blown by the substitution at the heart of the quintessential jazzs sound, zamboosling fourths into halfsteps with the flick of a tri-tone. ",
+                                   ["description": "This goal unlocks a sure fire way to spice up any ii-V-I (in other words, every jazz song ever). Get your mind blown by the substitution at the heart of the quintessential jazzs sound, zamboosling fourths into halfsteps with the flick of a tri-tone. ",
                                     "iconPath": "",
                                     "id": 2,
                                     "lessons": [10, 11, 12, 13, 14, 15],

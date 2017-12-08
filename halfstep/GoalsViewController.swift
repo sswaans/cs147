@@ -76,6 +76,7 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
         cell.layer.shadowOpacity = 0.75
         cell.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
         cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.layer.cornerRadius).cgPath
+        cell.backgroundView = UIImageView(image: #imageLiteral(resourceName: "noteIcon"))
         
         switch indexPath.section {
         case 0:
@@ -132,6 +133,7 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
         switch indexPath.section {
         case 0:
             user?.setCurrentGoal(goalToSet: cell.goal!)
+            ((tabBarController?.viewControllers?[0] as! UINavigationController).viewControllers[0] as! LessonsCollectionViewController).navBar.title = cell.goal?.name!
             tabBarController?.selectedIndex = 0
         case 1:
             selectedGoal = cell.goal
@@ -169,6 +171,8 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
     func shouldSwitchToLessons(forGoal goal: Goal?) {
         selectedGoal = nil
         user?.addGoal(goalToAdd: goal!)
+        user?.setCurrentGoal(goalToSet: goal!)
+        ((tabBarController?.viewControllers?[0] as! UINavigationController).viewControllers[0] as! LessonsCollectionViewController).navBar.title = goal?.name!
         tabBarController?.selectedIndex = 0
     }
     

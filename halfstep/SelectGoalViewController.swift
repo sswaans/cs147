@@ -30,6 +30,11 @@ class SelectGoalViewController: UIViewController {
         goalButton.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
         goalButton.layer.shadowPath = UIBezierPath(roundedRect: goalButton.bounds, cornerRadius: goalButton.layer.cornerRadius).cgPath
         
+        goalLabel.text = goal?.name!
+        
+        goalDescription.text = goal?.goalDescription!
+        goalDescription.adjustsFontSizeToFitWidth = true
+        
     }
     // On click, dismiss popover and switch to learn tab
     @IBAction func onClick(_ sender: UIButton) {
