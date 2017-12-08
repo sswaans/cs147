@@ -55,6 +55,34 @@ class LessonsCollectionViewController: UICollectionViewController {
         
         navBar.title = currentGoal?.name
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        user = User.getCurrentUser()
+        navBar.title = currentGoal?.name
+        for view in lessonsCollectionView.subviews {
+            view.removeFromSuperview()
+        }
+        var newCurrLesson: Lesson? = nil
+        
+        var index = 0
+        while newCurrLesson == nil {
+            do {
+                let request: NSFetchRequest<Lesson> = Lesson.fetchRequest()
+                request.predicate = NSPredicate(format: "id = %d", index + GoalData.getSharedInstance().getFirstLessonID(forGoalID: currentGoal!.id))
+                let lessons = try context.fetch(request)
+                if !lessons[0].completed {
+                    newCurrLesson = lessons[0]
+                }
+                index += 1
+            } catch {
+                // do nothing ;)
+                // sometimes i like to cover myself in mayonnaise and pretend i'm a slug =<===>
+            }
+        }
+        user?.currentLesson = newCurrLesson
+        
+        lessonsCollectionView.reloadData()
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "showLessonSegue"){
@@ -92,9 +120,9 @@ class LessonsCollectionViewController: UICollectionViewController {
         if let lessonCell = cell as? LessonsCollectionViewCell {
             let lessonLabel = UILabel()
             lessonLabel.text = "lesson name"
-            lessonLabel.font = UIFont(name: "AvenirNextCondensed-Regular", size: 30.0)
+            lessonLabel.font = UIFont(name: "AvenirNextCondensed-Regular", size: 17.0)
             collectionView.addSubview(lessonLabel)
-            lessonLabel.frame = CGRect(x: lessonCell.frame.minX, y: lessonCell.frame.maxY + 10, width: lessonCell.frame.width, height: 20)
+            lessonLabel.frame = CGRect(x: lessonCell.frame.minX, y: lessonCell.frame.maxY + 10, width: lessonCell.frame.width, height: 40)
             lessonLabel.textAlignment = NSTextAlignment.center
             lessonLabel.adjustsFontSizeToFitWidth = true
             lessonLabel.numberOfLines = 2
@@ -125,7 +153,8 @@ class LessonsCollectionViewController: UICollectionViewController {
     }
     
     private func getTotalIndex(ofPath indexPath: IndexPath) -> Int {
-        var result = 0
+        var result = GoalData.getSharedInstance().getFirstLessonID(forGoalID: (currentGoal?.id)!)
+        print(result)
         result += indexPath.item
         if indexPath.section > 0 {
             for section in 0...indexPath.section - 1 {

@@ -15,6 +15,7 @@ class LessonViewController: UIViewController {
     @IBOutlet weak var recordingStatusLabel: UILabel!
     @IBOutlet weak var recordButton: UIButton!
     var clickCount = 0
+    var lesson: Lesson? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()

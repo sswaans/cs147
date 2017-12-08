@@ -14,50 +14,51 @@ class GoalData {
     private static let sharedInstance = GoalData()
     private var goals: [Goal]
     private var allLessons: [Lesson]
+    private let goalDictionaryArray = [["description": "anything but boring, mastering the seven noted wonders at the heart of western music will open up your musical world, from brahams to the beatles.",
+                                "iconPath": "",
+                                "id": 0,
+                                "lessons": [0, 1, 2, 3, 4],
+                                "level": 10,
+                                "name": "major scales",
+                                "progress": 0,
+                                "progressRequired": 100],
+                               ["description": "plot twist: what happens when you start a major scale on its sixth note? dark and moving, the minor scales will take what you learned from the major scales to the next level.",
+                                "iconPath": "",
+                                "id": 1,
+                                "lessons": [5, 6, 7, 8, 9],
+                                "level": 10,
+                                "name": "minor scales",
+                                "progress": 0,
+                                "progressRequired": 100],
+                               ["description": "This goal unlocks a sure fire way to spice up any ii-V-I (in other words, every jazz song ever). Get your mind blown by the substitution at the heart of the quintessential jazzs sound, zamboosling fourths into halfsteps with the flick of a tri-tone. ",
+                                "iconPath": "",
+                                "id": 2,
+                                "lessons": [10, 11, 12, 13, 14, 15],
+                                "level": 10,
+                                "name": "tri-tone substitution",
+                                "progress": 0,
+                                "progressRequired": 100],
+                               ["description": "Ever drooled over the cascading, chromatalicious lines from the jazz cats? Now it's your turn: learn the 8 note wonder we call the bebop scale and scooch your solos around like never before.",
+                                "iconPath": "",
+                                "id": 3,
+                                "lessons": [16, 17, 18],
+                                "level": 10,
+                                "name": "Bebop Scales",
+                                "progress": 0,
+                                "progressRequired": 100],
+                               ["description": "Blues players know how to get that grungy, raw sound when they need it. It's about time you did, too. Get funky in all the right ways with the minor blues scale, a soulful reincarnation of the obsequious minor pentatonic.",
+                                "iconPath": "",
+                                "id": 4,
+                                "lessons": [19, 20, 21],
+                                "level": 10,
+                                "name": "Minor Blues Scale",
+                                "progress": 0,
+                                "progressRequired": 100]]
+
     private init() {
         allLessons = [Lesson]()
         goals = []
         getAllLessons()
-        let goalDictionaryArray = [["description": "anything but boring, mastering the seven noted wonders at the heart of western music will open up your musical world, from brahams to the beatles.",
-                                    "iconPath": "",
-                                    "id": 0,
-                                    "lessons": [0, 1, 2, 3, 4],
-                                    "level": 10,
-                                    "name": "major scales",
-                                    "progress": 0,
-                                    "progressRequired": 100],
-                                   ["description": "plot twist: what happens when you start a major scale on its sixth note? dark and moving, the minor scales will take what you learned from the major scales to the next level.",
-                                    "iconPath": "",
-                                    "id": 1,
-                                    "lessons": [5, 6, 7, 8, 9],
-                                    "level": 10,
-                                    "name": "minor scales",
-                                    "progress": 0,
-                                    "progressRequired": 100],
-                                   ["description": "This goal unlocks a sure fire way to spice up any ii-V-I (in other words, every jazz song ever). Get your mind blown by the substitution at the heart of the quintessential jazzs sound, zamboosling fourths into halfsteps with the flick of a tri-tone. ",
-                                    "iconPath": "",
-                                    "id": 2,
-                                    "lessons": [10, 11, 12, 13, 14, 15],
-                                    "level": 10,
-                                    "name": "tri-tone substitution",
-                                    "progress": 0,
-                                    "progressRequired": 100],
-                                   ["description": "Ever drooled over the cascading, chromatalicious lines from the jazz cats? Now it's your turn: learn the 8 note wonder we call the bebop scale and scooch your solos around like never before.",
-                                    "iconPath": "",
-                                    "id": 3,
-                                    "lessons": [16, 17, 18],
-                                    "level": 10,
-                                    "name": "Bebop Scales",
-                                    "progress": 0,
-                                    "progressRequired": 100],
-                                   ["description": "Blues players know how to get that grungy, raw sound when they need it. It's about time you did, too. Get funky in all the right ways with the minor blues scale, a soulful reincarnation of the obsequious minor pentatonic.",
-                                    "iconPath": "",
-                                    "id": 4,
-                                    "lessons": [19, 20, 21],
-                                    "level": 10,
-                                    "name": "Minor Blues Scale",
-                                    "progress": 0,
-                                    "progressRequired": 100]]
         
         for goalDict in goalDictionaryArray {
             let lessons = createLessonsForGoal(lessonIDs: goalDict["lessons"] as! [Int]);
@@ -225,5 +226,12 @@ class GoalData {
     public func getLessonObjById(lessonID: Int) -> Lesson {
         return allLessons[lessonID]
     }
+    
+    public func getFirstLessonID(forGoalID id: Int32) -> Int {
+        
+        let lessonArray = goalDictionaryArray[Int(id)]["lessons"] as! [Int]
+        return lessonArray[0]
+    }
+    
     
 }

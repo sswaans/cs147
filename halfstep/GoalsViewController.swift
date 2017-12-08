@@ -32,6 +32,15 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
         user = User.getCurrentUser()
         GoalData.getSharedInstance()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        for view in goalsCollectionView.subviews {
+            view.removeFromSuperview()
+        }
+        
+        goalsCollectionView.reloadData()
+    }
+
 
 
     /*
@@ -52,7 +61,7 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
 
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let numLockedGoals = 1
+        let numLockedGoals = 2
         switch section {
         case 0:
             return (user!.goals?.count)!
@@ -83,7 +92,7 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
         case 0:
             cell.backgroundColor = UIColor(red: 1.0, green: 226.0/255.0, blue: 81.0/255.0, alpha: 1.0)
         case 1:
-            break
+            cell.backgroundColor = UIColor(red: 13.0/255.0, green: 152.0/255.0, blue: 1.0, alpha: 1.0)
         case 2:
             cell.backgroundColor = UIColor.gray
         default:
@@ -173,6 +182,7 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
         selectedGoal = nil
         user?.addGoal(goalToAdd: goal!)
         user?.setCurrentGoal(goalToSet: goal!)
+        print(user?.goals)
         ((tabBarController?.viewControllers?[0] as! UINavigationController).viewControllers[0] as! LessonsCollectionViewController).navBar.title = goal?.name!
         tabBarController?.selectedIndex = 0
     }
