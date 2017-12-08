@@ -89,7 +89,6 @@ class User: NSManagedObject {
                 currentUser.setValue(nil, forKey: "currentLesson")
                 currentUser.setValue(nil, forKey: "goals")
                 currentUser.setValue(nil, forKey: "friends")
-                currentUser.setValue(nil, forKey: "currentGoal")
                 currentUser.setValue(nil, forKey: "allUserEvents")
                 currentUser.setValue(1, forKey: "id")
                 try context.save()

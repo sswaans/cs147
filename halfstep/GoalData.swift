@@ -40,9 +40,9 @@ class GoalData {
                                     "progressRequired": 100]]
         
         for goalDict in goalDictionaryArray {
-            var lessons = [Lesson]
-            createLessonsForGoal(goalDict.lessons, &lessons);
-            var goalObj = Goal(goalName: goalObj.name, goalLessons: lessons, goalDescription: goalDict.description, goalIconPath: goalDict.iconPath)
+            var lessons = [Lesson]() // to be populated
+            createLessonsForGoal(lessonIDs: goalDict["lessons"] as! [Int], lessons: &lessons);
+            var goalObj = Goal(goalName: goalDict["name"] as! String, goalLessons: lessons, goalDescription: goalDict["description"] as! String, goalIconPath: goalDict["iconPath"] as! String)
             goals.append(goalObj)
         }
     }
@@ -130,7 +130,7 @@ class GoalData {
                                       "xpPoints": 10]]
         for lessonID in lessonIDs {
             var lessonDict = lessonDictionaryArray[lessonID] // they're sorted by ID 0 through n
-            var lessonObj = Lesson(completed: lessonDict.completed, name: lessonDict.name, xpPoints: lessonDict.xpPoints)
+            var lessonObj = Lesson(completed: lessonDict["completed"] as! Bool, name: lessonDict["name"] as! String, xpPoints: lessonDict["xpPoints"] as! Int)
             lessons.append(lessonObj)
         }
     }
