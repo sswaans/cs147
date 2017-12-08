@@ -17,9 +17,13 @@ class LessonsCollectionViewController: UICollectionViewController {
     
     private var user: User?
     
+    fileprivate var insets = UIEdgeInsets(top: 0, left: 20.0, bottom: 60.0, right: 20.0)
+    
     let context = AppDelegate.viewContext
     
     let goalData = GoalData.getSharedInstance()
+    
+    @IBOutlet weak var navBar: UINavigationItem!
     
     var currentGoal: Goal? {
         get {
@@ -43,12 +47,11 @@ class LessonsCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(LessonsCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         user = User.getCurrentUser()
         
-        lessonsCollectionView.delegate = self
-        lessonsCollectionView.dataSource = self
+        navBar.title = currentGoal?.name
     }
 
     /*
@@ -86,21 +89,34 @@ class LessonsCollectionViewController: UICollectionViewController {
         cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.layer.cornerRadius).cgPath
         
         if let lessonCell = cell as? LessonsCollectionViewCell {
+            let lessonLabel = UILabel()
+            lessonLabel.text = "lesson name"
+            lessonLabel.font = UIFont(name: "AvenirNextCondensed-Regular", size: 30.0)
+            collectionView.addSubview(lessonLabel)
+            lessonLabel.frame = CGRect(x: lessonCell.frame.minX, y: lessonCell.frame.maxY + 10, width: lessonCell.frame.width, height: 20)
+            lessonLabel.textAlignment = NSTextAlignment.center
+            lessonLabel.adjustsFontSizeToFitWidth = true
+            lessonLabel.numberOfLines = 2
+            lessonCell.lessonLabel = lessonLabel
+            
             do {
                 let request: NSFetchRequest<Lesson> = Lesson.fetchRequest()
                 request.predicate = NSPredicate(format: "id = %d", getTotalIndex(ofPath: indexPath))
                 let lessons = try context.fetch(request)
                 lessonCell.lesson = lessons[0]
-                print(lessonCell.lesson?.name)
+                lessonCell.lessonLabel?.text = lessonCell.lesson?.name
             } catch {
                 // do nothing ;)
-                // sometimes i like to cover myself in mayonnaise and pretend i'm a slug <==O=
+                // sometimes i like to cover myself in mayonnaise and pretend i'm a slug =<===>
             }
             if (lessonCell.lesson?.completed)! {
                 cell.backgroundColor = UIColor(red: 1.0, green: 226.0/255.0, blue: 81.0/255.0, alpha: 1.0)
             }
             else if lessonCell.lesson != user?.currentLesson {
                 cell.backgroundColor = UIColor.gray
+            }
+            else {
+                cell.backgroundColor = UIColor(red: 13.0/255.0, green: 152.0/255.0, blue: 1.0, alpha: 1.0)
             }
         }
     
@@ -120,6 +136,23 @@ class LessonsCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        let cell = collectionView.cellForItem(at: indexPath) as! LessonCollectionViewCell
+    }
+    
+}
+
+extension LessonsCollectionViewController : UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemRadius = 125.0
+        return CGSize(width: itemRadius, height: itemRadius)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(30, (view.frame.width / 2.0) - 62.5, 30.0, 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return insets.left
     }
     
 }
