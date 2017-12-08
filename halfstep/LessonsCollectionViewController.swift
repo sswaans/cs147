@@ -13,6 +13,8 @@ private let reuseIdentifier = "lessonCell"
 
 class LessonsCollectionViewController: UICollectionViewController {
     
+    @IBOutlet var lessonsCollectionView: UICollectionView!
+    
     private var user: User?
     
     let context = AppDelegate.viewContext
@@ -44,6 +46,9 @@ class LessonsCollectionViewController: UICollectionViewController {
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         user = User.getCurrentUser()
+        
+        lessonsCollectionView.delegate = self
+        lessonsCollectionView.dataSource = self
     }
 
     /*
@@ -82,11 +87,15 @@ class LessonsCollectionViewController: UICollectionViewController {
         
         if let lessonCell = cell as? LessonsCollectionViewCell {
             do {
-                try 
+                let request: NSFetchRequest<Lesson> = Lesson.fetchRequest()
+                request.predicate = NSPredicate(format: "id = %d", getTotalIndex(ofPath: indexPath))
+                let lessons = try context.fetch(request)
+                lessonCell.lesson = lessons[0]
+                print(lessonCell.lesson?.name)
             } catch {
-                
+                // do nothing ;)
+                // sometimes i like to cover myself in mayonnaise and pretend i'm a slug <==O=
             }
-            lessonCell.lesson =
             if (lessonCell.lesson?.completed)! {
                 cell.backgroundColor = UIColor(red: 1.0, green: 226.0/255.0, blue: 81.0/255.0, alpha: 1.0)
             }
@@ -96,6 +105,17 @@ class LessonsCollectionViewController: UICollectionViewController {
         }
     
         return cell
+    }
+    
+    private func getTotalIndex(ofPath indexPath: IndexPath) -> Int {
+        var result = 0
+        result += indexPath.item
+        if indexPath.section > 0 {
+            for section in 0...indexPath.section - 1 {
+                result += lessonsCollectionView.numberOfItems(inSection: section)
+            }
+        }
+        return result
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
