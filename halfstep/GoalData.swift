@@ -50,6 +50,7 @@ class GoalData {
             goals.append(goalObj)
         }
     }
+    // i've changed, you wouldnt recognize me
     
     private func createLessonsForGoal(lessonIDs: [Int]) -> [Lesson] {
         var lessons = [Lesson]()
