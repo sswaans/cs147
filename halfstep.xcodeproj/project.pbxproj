@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1BC48F711FDA2A4C000E77E5 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC48F701FDA2A4C000E77E5 /* UserData.swift */; };
+		1BC48F731FDA854E000E77E5 /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC48F721FDA854E000E77E5 /* LessonViewController.swift */; };
 		6E57F1A41FCE8C3F009132B2 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E57F1A31FCE8C3F009132B2 /* Lesson.swift */; };
 		6E57F1A61FCE9441009132B2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E57F1A51FCE9441009132B2 /* User.swift */; };
 		6E57F1AC1FCE9774009132B2 /* Applause.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E57F1AB1FCE9774009132B2 /* Applause.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		1BC48F701FDA2A4C000E77E5 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		1BC48F721FDA854E000E77E5 /* LessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
 		6E57F1A31FCE8C3F009132B2 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		6E57F1A51FCE9441009132B2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6E57F1AB1FCE9774009132B2 /* Applause.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Applause.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			children = (
 				F1405E521FCA386D007F6305 /* Supporting Files */,
 				F1ADCC1B1FBF91F000DCB57A /* Main.storyboard */,
+				1BC48F721FDA854E000E77E5 /* LessonViewController.swift */,
 				6E57F1AB1FCE9774009132B2 /* Applause.swift */,
 				6E57F1B31FCEA546009132B2 /* RecordLesson.swift */,
 				F1405E5B1FCB89B8007F6305 /* GoalData.swift */,
@@ -205,6 +208,7 @@
 				1BC48F711FDA2A4C000E77E5 /* UserData.swift in Sources */,
 				6E57F1AE1FCE99D8009132B2 /* UserEvent.swift in Sources */,
 				F1405E581FCB8460007F6305 /* SelectGoalViewController.swift in Sources */,
+				1BC48F731FDA854E000E77E5 /* LessonViewController.swift in Sources */,
 				6E57F1B21FCEA10B009132B2 /* TreeNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

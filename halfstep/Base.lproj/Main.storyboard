@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1036" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nfM-8w-W1y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nfM-8w-W1y">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNextCondensed.ttc">
+            <string>AvenirNextCondensed-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--LearnNav-->
         <scene sceneID="7GT-Nd-WiS">
@@ -16,7 +21,6 @@
                 <navigationController id="1z7-bc-kaa" userLabel="LearnNav" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Learn" image="noteIcon" selectedImage="noteIcon" id="8zb-PD-1nh"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z0K-fT-8TR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="25"/>
@@ -66,6 +70,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IPN-Gs-dpQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1593" y="-457"/>
+        </scene>
+        <!--Lesson Scene-->
+        <scene sceneID="3BM-wQ-7p2">
+            <objects>
+                <viewController title="Lesson Scene" id="cKM-8H-hgI" customClass="LessonViewController" customModule="halfstep" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="S7q-Hz-InJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mxj-Kd-fvn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dPm-SL-rJ3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="hit record, then play these notes." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvv-RG-seG">
+                                <rect key="frame" x="0.0" y="100" width="375" height="131"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cMajorScaleIcon" translatesAutoresizingMaskIntoConstraints="NO" id="uDS-vU-9nL">
+                                <rect key="frame" x="67" y="239" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oc8-3x-2Jl">
+                                <rect key="frame" x="144" y="539" width="86" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhi-nz-MCs">
+                                <rect key="frame" x="164" y="464" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="recordingStatusLabel" destination="Oc8-3x-2Jl" id="oy2-vH-yke"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lWe-0O-1HO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2501.5999999999999" y="-593.25337331334333"/>
         </scene>
         <!--Friends-->
         <scene sceneID="wg7-f3-ORb">
@@ -157,7 +207,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="1wj-kF-Cd9">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="search"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O28-JU-2G8">
@@ -406,7 +456,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dGs-KI-SuA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2844" y="-110"/>
+            <point key="canvasLocation" x="3546" y="-114"/>
         </scene>
         <!--Entry Page-->
         <scene sceneID="IEr-pj-WrH">
@@ -436,6 +486,18 @@
                                 <state key="normal" title="start"/>
                                 <connections>
                                     <segue destination="49e-Tb-3d3" kind="show" id="CEv-BF-yj9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8S-Ee-6JE">
+                                <rect key="frame" x="260" y="560" width="84" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="QgI-vy-lK1"/>
+                                    <constraint firstAttribute="width" constant="84" id="tAg-f8-Wsl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="40"/>
+                                <state key="normal" title="david's special button"/>
+                                <connections>
+                                    <segue destination="cKM-8H-hgI" kind="show" id="fI3-KW-zdi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -478,7 +540,6 @@
                 <navigationController id="dk5-Kr-ILu" userLabel="FriendsNav" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Friends" image="friendsIcon" selectedImage="friendsIcon" id="I49-WN-IRR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AbN-QD-bom">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="25"/>
@@ -498,7 +559,6 @@
                 <navigationController id="Qlz-EV-h7a" userLabel="GoalsNav" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Goals" image="goalIcon" selectedImage="goalIcon" id="bEK-YQ-MvK"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vSX-P5-Nzh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="25"/>
@@ -590,6 +650,7 @@
     </scenes>
     <resources>
         <image name="applaudIcon" width="200" height="200"/>
+        <image name="cMajorScaleIcon" width="906" height="428"/>
         <image name="friendsIcon" width="37" height="37"/>
         <image name="goalIcon" width="37" height="37"/>
         <image name="messageIcon" width="75" height="75"/>
