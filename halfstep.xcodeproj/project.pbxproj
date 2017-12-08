@@ -16,6 +16,10 @@
 		6E57F1B01FCE9A93009132B2 /* LessonCompleteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E57F1AF1FCE9A93009132B2 /* LessonCompleteEvent.swift */; };
 		6E57F1B21FCEA10B009132B2 /* TreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E57F1B11FCEA10B009132B2 /* TreeNode.swift */; };
 		6E57F1B41FCEA546009132B2 /* RecordLesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E57F1B31FCEA546009132B2 /* RecordLesson.swift */; };
+		6E908A631FDAAC3300A9F94D /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E908A621FDAAC3300A9F94D /* FriendTableViewCell.swift */; };
+		6E908A651FDAAD5000A9F94D /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E908A641FDAAD5000A9F94D /* FriendsTableViewController.swift */; };
+		6E908A671FDAB15F00A9F94D /* AddFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E908A661FDAB15F00A9F94D /* AddFriendTableViewCell.swift */; };
+		6E908A691FDAB1CA00A9F94D /* AddFriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E908A681FDAB1CA00A9F94D /* AddFriendTableViewController.swift */; };
 		6EA31C1F1FDA84A700E55FEF /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA31C1E1FDA84A700E55FEF /* NewsTableViewCell.swift */; };
 		6EA31C211FDA882100E55FEF /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA31C201FDA882100E55FEF /* NewsTableViewController.swift */; };
 		F1405E541FCA3E17007F6305 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1405E531FCA3E17007F6305 /* FriendsViewController.swift */; };
@@ -43,6 +47,10 @@
 		6E57F1AF1FCE9A93009132B2 /* LessonCompleteEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCompleteEvent.swift; sourceTree = "<group>"; };
 		6E57F1B11FCEA10B009132B2 /* TreeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeNode.swift; sourceTree = "<group>"; };
 		6E57F1B31FCEA546009132B2 /* RecordLesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordLesson.swift; sourceTree = "<group>"; };
+		6E908A621FDAAC3300A9F94D /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
+		6E908A641FDAAD5000A9F94D /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
+		6E908A661FDAB15F00A9F94D /* AddFriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendTableViewCell.swift; sourceTree = "<group>"; };
+		6E908A681FDAB1CA00A9F94D /* AddFriendTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendTableViewController.swift; sourceTree = "<group>"; };
 		6EA31C1E1FDA84A700E55FEF /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		6EA31C201FDA882100E55FEF /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		F1405E531FCA3E17007F6305 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +114,9 @@
 			children = (
 				F1405E521FCA386D007F6305 /* Supporting Files */,
 				F1ADCC1B1FBF91F000DCB57A /* Main.storyboard */,
+				6E908A681FDAB1CA00A9F94D /* AddFriendTableViewController.swift */,
+				6E908A661FDAB15F00A9F94D /* AddFriendTableViewCell.swift */,
+				6E908A621FDAAC3300A9F94D /* FriendTableViewCell.swift */,
 				1BC48F721FDA854E000E77E5 /* LessonViewController.swift */,
 				6E57F1AB1FCE9774009132B2 /* Applause.swift */,
 				6EA31C201FDA882100E55FEF /* NewsTableViewController.swift */,
@@ -117,6 +128,7 @@
 				6E57F1B11FCEA10B009132B2 /* TreeNode.swift */,
 				F1405E571FCB8460007F6305 /* SelectGoalViewController.swift */,
 				F1405E531FCA3E17007F6305 /* FriendsViewController.swift */,
+				6E908A641FDAAD5000A9F94D /* FriendsTableViewController.swift */,
 				F1405E551FCB6E2C007F6305 /* GoalsViewController.swift */,
 				6EA31C1E1FDA84A700E55FEF /* NewsTableViewCell.swift */,
 				F1AA7A071FCBE03D003D6769 /* LessonsCollectionViewController.swift */,
@@ -203,7 +215,9 @@
 			files = (
 				6E57F1A41FCE8C3F009132B2 /* Lesson.swift in Sources */,
 				F1AA7A0A1FCCC56D003D6769 /* Goal.swift in Sources */,
+				6E908A691FDAB1CA00A9F94D /* AddFriendTableViewController.swift in Sources */,
 				6E57F1B01FCE9A93009132B2 /* LessonCompleteEvent.swift in Sources */,
+				6E908A651FDAAD5000A9F94D /* FriendsTableViewController.swift in Sources */,
 				F1AA7A081FCBE03D003D6769 /* LessonsCollectionViewController.swift in Sources */,
 				F14906C41FDA995F00D12D56 /* LessonsCollectionViewCell.swift in Sources */,
 				F1405E5C1FCB89B8007F6305 /* GoalData.swift in Sources */,
@@ -211,11 +225,13 @@
 				F1405E541FCA3E17007F6305 /* FriendsViewController.swift in Sources */,
 				F1405E561FCB6E2C007F6305 /* GoalsViewController.swift in Sources */,
 				6EA31C1F1FDA84A700E55FEF /* NewsTableViewCell.swift in Sources */,
+				6E908A671FDAB15F00A9F94D /* AddFriendTableViewCell.swift in Sources */,
 				6E57F1B41FCEA546009132B2 /* RecordLesson.swift in Sources */,
 				6EA31C211FDA882100E55FEF /* NewsTableViewController.swift in Sources */,
 				F1ADCC161FBF91F000DCB57A /* AppDelegate.swift in Sources */,
 				6E57F1A61FCE9441009132B2 /* User.swift in Sources */,
 				F16D8E0F1FCF893600F53040 /* Model.xcdatamodeld in Sources */,
+				6E908A631FDAAC3300A9F94D /* FriendTableViewCell.swift in Sources */,
 				6E57F1AC1FCE9774009132B2 /* Applause.swift in Sources */,
 				1BC48F711FDA2A4C000E77E5 /* UserData.swift in Sources */,
 				6E57F1AE1FCE99D8009132B2 /* UserEvent.swift in Sources */,

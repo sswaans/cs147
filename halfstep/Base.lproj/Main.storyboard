@@ -21,7 +21,6 @@
                 <navigationController id="1z7-bc-kaa" userLabel="LearnNav" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Learn" image="noteIcon" selectedImage="noteIcon" id="8zb-PD-1nh"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z0K-fT-8TR">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="25"/>
@@ -39,7 +38,7 @@
         <scene sceneID="3lN-Ji-ss1">
             <objects>
                 <collectionViewController id="CGe-I3-SzU" userLabel="Learn" customClass="LessonsCollectionViewController" customModule="halfstep" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="6gM-vZ-kxq">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="6gM-vZ-kxq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -201,7 +200,7 @@
         <!--Add Friend-->
         <scene sceneID="Net-8D-gxV">
             <objects>
-                <viewController id="Lhs-b8-vxk" userLabel="Add Friend" sceneMemberID="viewController">
+                <viewController id="Lhs-b8-vxk" userLabel="Add Friend" customClass="AddFriendTableViewController" customModule="halfstep" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BIa-5V-c0D"/>
                         <viewControllerLayoutGuide type="bottom" id="qKf-6o-KhL"/>
@@ -211,7 +210,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="1wj-kF-Cd9">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="search"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O28-JU-2G8">
@@ -221,7 +220,7 @@
                                     <constraint firstAttribute="height" constant="461" id="vdr-6n-QHa"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addFriendCell" rowHeight="65" id="gbN-Rf-yz9">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addFriendCell" rowHeight="65" id="gbN-Rf-yz9" customClass="AddFriendTableViewCell" customModule="halfstep" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gbN-Rf-yz9" id="zgx-s3-PUM">
@@ -259,6 +258,10 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="Gys-C4-BVR" secondAttribute="trailing" constant="3" id="shE-od-nDW"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="pba-Th-xfr" id="i2F-Cr-1pL"/>
+                                            <outlet property="profileImageView" destination="u8V-2q-g3q" id="Q9E-Tz-A97"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -281,13 +284,13 @@
         <!--Friends-->
         <scene sceneID="gqI-J3-5zE">
             <objects>
-                <tableViewController id="pso-jw-Z8y" userLabel="Friends" sceneMemberID="viewController">
+                <tableViewController id="pso-jw-Z8y" userLabel="Friends" customClass="FriendsTableViewController" customModule="halfstep" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="RJh-Oh-v1d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="505"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="friendCell" rowHeight="65" id="f8o-Ma-MwC">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="friendCell" rowHeight="65" id="f8o-Ma-MwC" customClass="FriendTableViewCell" customModule="halfstep" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f8o-Ma-MwC" id="SFy-v4-yA5">
@@ -326,6 +329,10 @@
                                         <constraint firstItem="fWI-gc-bSW" firstAttribute="centerY" secondItem="QfO-XX-udi" secondAttribute="centerY" id="uU7-Av-am3"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="QfO-XX-udi" id="dLb-tP-bhG"/>
+                                    <outlet property="profileImageView" destination="zRe-89-XPw" id="LSO-dc-Ejh"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -548,7 +555,6 @@
                 <navigationController id="dk5-Kr-ILu" userLabel="FriendsNav" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Friends" image="friendsIcon" selectedImage="friendsIcon" id="I49-WN-IRR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AbN-QD-bom">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="25"/>
@@ -568,7 +574,6 @@
                 <navigationController id="Qlz-EV-h7a" userLabel="GoalsNav" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Goals" image="goalIcon" selectedImage="goalIcon" id="bEK-YQ-MvK"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vSX-P5-Nzh">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="25"/>
