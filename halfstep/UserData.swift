@@ -24,6 +24,7 @@ class UserData {
                                    "beyonce": 10,
                                    "jayz": 11]
     private init() {
+        let goalData = GoalData.getSharedInstance()
         users = []
         let userDictionaryArray = [["allUserEvents": ["practiced for 30 minutes today", "practiced for 23 minutes yesterday", "achieved Level 3 in Play All Major Scales", "set a new goal: Play All Minor Scales", "became friends with beyonce", "became friends with jayz"],
                                     "currentGoal": 0,
@@ -138,8 +139,10 @@ class UserData {
             let userEntity = NSEntityDescription.entity(forEntityName: "User", in: AppDelegate.viewContext)
             let userObj = User(entity: userEntity!, insertInto: AppDelegate.viewContext)
             userObj.name = userDict["name"] as? String
-            userObj.currentGoal = userDict["currentGoal"] as? Goal
-            userObj.currentLesson = userDict["currentLesson"] as? Lesson
+            userObj.currentGoal   = goalData.getGoalObjByGoalID(goalID: (userDict["currentGoal"] as? Int)!)
+            userObj.currentLesson = goalData.getLessonObjById(lessonID: (userDict["currentLesson"] as? Int)!)
+            userObj.allUserEvents = NSSet(array: createUserEvents(eventStrings: (userDict["allUserEvents"] as! [String])))
+            
             users.append(userObj)
         }
         
@@ -148,6 +151,17 @@ class UserData {
         } catch {
             fatalError("Failure to save context: \(error)")
         }
+    }
+    
+    private func createUserEvents(eventStrings: [String]) -> [UserEvent] {
+        var events = [UserEvent]()
+        for eventString in eventStrings {
+            let userEventEntity = NSEntityDescription.entity(forEntityName: "UserEvent", in: AppDelegate.viewContext)
+            let userEventObj = UserEvent(entity: userEventEntity!, insertInto: AppDelegate.viewContext)
+            userEventObj.content = eventString
+            events.append(userEventObj)
+        }
+        return events
     }
     
     public static func getSharedInstance() -> UserData {
