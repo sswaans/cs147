@@ -24,6 +24,7 @@ class UserData {
                                    "beyonce": 10,
                                    "jayz": 11]
     private init() {
+        let goalData = GoalData.getSharedInstance()
         users = []
         let userDictionaryArray = [["allUserEvents": ["practiced for 30 minutes today", "practiced for 23 minutes yesterday", "achieved Level 3 in Play All Major Scales", "set a new goal: Play All Minor Scales", "became friends with beyonce", "became friends with jayz"],
                                     "currentGoal": 0,
@@ -31,28 +32,32 @@ class UserData {
                                     "friends": ["khoi", "andrew", "beyonce", "jayz"],
                                     "goals": [1, 2],
                                     "id": 2,
-                                    "name": "david"],
+                                    "name": "david",
+                                    "imagePath": "david_mora"],
                                    ["allUserEvents": ["practiced for 30 minutes today", "practiced for 23 minutes yesterday", "achieved Level 3 in Play All Major Scales", "set a new goal: Play All Minor Scales", "became friends with beyonce", "became friends with jayz"],
                                     "currentGoal": 1,
                                     "currentLesson": 5,
                                     "friends": ["david", "andrew", "beyonce", "jayz"],
                                     "goals": [1, 2],
                                     "id": 3,
-                                    "name": "khoi"],
+                                    "name": "khoi",
+                                    "imagePath": "khoi_le"],
                                    ["allUserEvents": ["practiced for 30 minutes today", "practiced for 23 minutes yesterday", "achieved Level 3 in Play All Major Scales", "set a new goal: Play All Minor Scales", "became friends with beyonce", "became friends with jayz"],
                                     "currentGoal": 2,
                                     "currentLesson": 10,
                                     "friends": ["james", "paulmccartney", "beyonce", "jayz"],
                                     "goals": [0, 1],
                                     "id": 4,
-                                    "name": "andrew"],
+                                    "name": "andrew",
+                                    "imagePath": ""],
                                    ["allUserEvents": ["practiced for 30 minutes today", "practiced for 23 minutes yesterday", "achieved Level 3 in Play All Major Scales", "set a new goal: Play All Minor Scales", "became friends with beyonce", "became friends with jayz"],
                                     "currentGoal": 2,
                                     "currentLesson": 11,
                                     "friends": ["andrew", "paulmccartney", "beyonce", "jayz"],
                                     "goals": [0, 1],
                                     "id": 5,
-                                    "name": "james"],
+                                    "name": "james",
+                                    "imagePath": ""],
                                    ["allUserEvents": ["practiced for 30 minutes today", "practiced for 23 minutes yesterday", "achieved Level 3 in Play All Major Scales", "set a new goal: Play All Minor Scales", "became friends with beyonce", "became friends with jayz"],
                                     "currentGoal": 0,
                                     "currentLesson": 2,
@@ -63,7 +68,8 @@ class UserData {
                                                 "jayz"],
                                     "goals": [1, 2],
                                     "id": 6,
-                                    "name": "johnlennon"],
+                                    "name": "johnlennon",
+                                    "imagePath": ""],
                                    ["allUserEvents": ["practiced for 30 minutes today", "practiced for 23 minutes yesterday", "achieved Level 3 in Play All Major Scales", "set a new goal: Play All Minor Scales", "became friends with beyonce", "became friends with jayz"],
                                     "currentGoal": 0,
                                     "currentLesson": 3,
@@ -74,7 +80,8 @@ class UserData {
                                                 "jayz"],
                                     "goals": [1, 2],
                                     "id": 7,
-                                    "name": "paulmccartney"],
+                                    "name": "paulmccartney",
+                                    "imagePath": ""],
                                    ["allUserEvents": ["practiced for 30 minutes today", "practiced for 23 minutes yesterday", "achieved Level 3 in Play All Major Scales", "set a new goal: Play All Minor Scales", "became friends with beyonce", "became friends with jayz"],
                                     "currentGoal": 1,
                                     "currentLesson": 6,
@@ -85,14 +92,16 @@ class UserData {
                                                 "jayz"],
                                     "goals": [1],
                                     "id": 8,
-                                    "name": "ringostarr"],
+                                    "name": "ringostarr",
+                                    "imagePath": ""],
                                    ["allUserEvents": ["practiced for 30 minutes today", "practiced for 23 minutes yesterday", "achieved Level 3 in Play All Major Scales", "set a new goal: Play All Minor Scales", "became friends with beyonce", "became friends with jayz"],
                                     "currentGoal": 1,
                                     "currentLesson": 7,
                                     "friends": ["paulmccartney", "ringostarr", "johnlennon", "beyonce", "jayz"],
                                     "goals": [1],
                                     "id": 9,
-                                    "name": "georgeharrison"],
+                                    "name": "georgeharrison",
+                                    "imagePath": ""],
                                    ["allUserEvents": ["practiced for 30 minutes today", "practiced for 23 minutes yesterday", "achieved Level 3 in Play All Major Scales", "set a new goal: Play All Minor Scales", "became friends with beyonce", "became friends with jayz"],
                                     "currentGoal": 2,
                                     "currentLesson": 12,
@@ -107,7 +116,8 @@ class UserData {
                                                 "andrew"],
                                     "goals": [0, 1],
                                     "id": 10,
-                                    "name": "beyonce"],
+                                    "name": "beyonce",
+                                    "imagePath": ""],
                                    ["allUserEvents": ["practiced for 30 minutes today", "practiced for 23 minutes yesterday", "achieved Level 3 in Play All Major Scales", "set a new goal: Play All Minor Scales", "became friends with beyonce", "became friends with jayz"],
                                     "currentGoal": 2,
                                     "currentLesson": 13,
@@ -122,14 +132,17 @@ class UserData {
                                                 "andrew"],
                                     "goals": [0, 1],
                                     "id": 11,
-                                    "name": "jayz"]]
+                                    "name": "jayz",
+                                    "imagePath": ""]]
         
         for userDict in userDictionaryArray {
             let userEntity = NSEntityDescription.entity(forEntityName: "User", in: AppDelegate.viewContext)
             let userObj = User(entity: userEntity!, insertInto: AppDelegate.viewContext)
             userObj.name = userDict["name"] as? String
-            userObj.currentGoal = userDict["currentGoal"] as? Goal
-            userObj.currentLesson = userDict["currentLesson"] as? Lesson
+            userObj.currentGoal   = goalData.getGoalObjByGoalID(goalID: (userDict["currentGoal"] as? Int)!)
+            userObj.currentLesson = goalData.getLessonObjById(lessonID: (userDict["currentLesson"] as? Int)!)
+            userObj.allUserEvents = NSSet(array: createUserEvents(eventStrings: (userDict["allUserEvents"] as! [String])))
+            
             users.append(userObj)
         }
         
@@ -138,6 +151,17 @@ class UserData {
         } catch {
             fatalError("Failure to save context: \(error)")
         }
+    }
+    
+    private func createUserEvents(eventStrings: [String]) -> [UserEvent] {
+        var events = [UserEvent]()
+        for eventString in eventStrings {
+            let userEventEntity = NSEntityDescription.entity(forEntityName: "UserEvent", in: AppDelegate.viewContext)
+            let userEventObj = UserEvent(entity: userEventEntity!, insertInto: AppDelegate.viewContext)
+            userEventObj.content = eventString
+            events.append(userEventObj)
+        }
+        return events
     }
     
     public static func getSharedInstance() -> UserData {
@@ -154,6 +178,14 @@ class UserData {
     
     public func getArrayOfAllUserObjects() -> [User] {
         return users
+    }
+    
+    public func getNotFriends() -> [User] {
+        var notFriends = [User]()
+        for i in 6..<10 {
+            notFriends.append(users[i])
+        }
+        return notFriends
     }
     
 }
