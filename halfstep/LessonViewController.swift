@@ -22,8 +22,13 @@ class LessonViewController: UIViewController {
     @IBAction func recordButtonPressed(_ sender: UIButton) {
         if (isRecording) {
             recordingStatusLabel.text = "record"
+            recordButton.alpha = 1
+            isRecording = false
+            
         } else {
             recordingStatusLabel.text = "recording..."
+            recordButton.alpha = 0.3
+            isRecording = true
         }
     }
     

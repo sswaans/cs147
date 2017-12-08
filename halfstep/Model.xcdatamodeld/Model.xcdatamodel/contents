@@ -11,7 +11,7 @@
         <relationship name="goals" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="goals" inverseEntity="User" syncable="YES"/>
         <relationship name="lessons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Lesson" inverseName="lessons" inverseEntity="Lesson" syncable="YES"/>
     </entity>
-    <entity name="Lesson" representedClassName="Lesson" syncable="YES" codeGenerationType="category">
+    <entity name="Lesson" representedClassName=".Lesson" syncable="YES" codeGenerationType="category">
         <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
