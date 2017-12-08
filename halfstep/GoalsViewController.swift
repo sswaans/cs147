@@ -93,7 +93,6 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
         }
         
         if let goalCell = cell as? GoalCollectionViewCell {
-            // TODO: Wire up goals to goal cells
             let goalLabel = UILabel()
             goalLabel.text = "goal name"
             goalLabel.font = UIFont(name: "AvenirNextCondensed-Regular", size: 17.0)
