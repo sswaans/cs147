@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class LessonViewController: UIViewController {
 
@@ -52,6 +53,16 @@ class LessonViewController: UIViewController {
                     self?.recordButton.alpha = 1
                     self?.instructionsLabel.text = "success!"
                     self?.clickCount += 1
+                    do {
+                        let request: NSFetchRequest<Lesson> = Lesson.fetchRequest()
+                        request.predicate = NSPredicate(format: "id = %d", (self?.lesson?.id)!)
+                        let lessons = try AppDelegate.viewContext.fetch(request)
+                        lessons[0].setValue(true, forKey: "completed")
+                        try AppDelegate.viewContext.save()
+                    } catch {
+                        // do nothing ;)
+                        // sometimes i like to cover myself in mayonnaise and pretend i'm a slug =<===>
+                    }
                     self?.lesson?.completed = true
                     let when = DispatchTime.now() + 1
                     DispatchQueue.main.asyncAfter(deadline: when) { [weak self] in

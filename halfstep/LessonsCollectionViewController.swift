@@ -172,7 +172,8 @@ class LessonsCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         if let lessonCell = cell as? LessonsCollectionViewCell {
-            if (lessonCell.lesson?.completed)! || lessonCell.lesson == user?.currentLesson {
+            var prevLessonCell: LessonsCollectionViewCell? = nil
+            if (cell?.backgroundColor != UIColor.gray) {
                 selectedLesson = lessonCell.lesson
                 performSegue(withIdentifier: "showLessonSegue", sender: self)
             }
