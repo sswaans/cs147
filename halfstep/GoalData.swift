@@ -14,7 +14,7 @@ class GoalData {
     private static let sharedInstance = GoalData()
     private var goals: [Goal]
     private var allLessons: [Lesson]
-    private var clickedFriend: User
+    private var clickedFriend: User!
     private let goalDictionaryArray = [["description": "anything but boring, mastering the seven noted wonders at the heart of western music will open up your musical world, from brahams to the beatles.",
                                 "iconPath": "",
                                 "id": 0,
