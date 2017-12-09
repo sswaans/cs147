@@ -455,28 +455,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X9W-7Y-uex" userLabel="messageButton">
-                                            <rect key="frame" x="287" y="14" width="36" height="36"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="36" id="LXv-G8-Qcy"/>
-                                            </constraints>
-                                            <state key="normal" image="messageIcon"/>
-                                        </button>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HqX-cn-ops">
-                                            <rect key="frame" x="17" y="-1" width="60" height="60"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HqX-cn-ops">
+                                            <rect key="frame" x="23" y="4" width="57" height="57"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="XDw-kK-k8p"/>
                                             </constraints>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQ7-Rg-doo" userLabel="applaudButton">
-                                            <rect key="frame" x="331" y="11" width="36" height="36"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="36" id="Qhe-Jz-UBq"/>
-                                            </constraints>
-                                            <state key="normal" image="applaudIcon"/>
-                                        </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stefan practiced for 30 minutes today" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFb-Lh-ScH" userLabel="newsLabel">
-                                            <rect key="frame" x="85" y="5" width="194" height="49"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CE7-AI-1Ur">
+                                            <rect key="frame" x="88" y="22" width="21" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Stefan practiced for 30 minutes today" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFb-Lh-ScH" userLabel="newsLabel">
+                                            <rect key="frame" x="117" y="4" width="244" height="55"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -484,22 +474,16 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="fFb-Lh-ScH" firstAttribute="centerY" secondItem="HqX-cn-ops" secondAttribute="centerY" id="76D-9p-UrX"/>
-                                        <constraint firstItem="X9W-7Y-uex" firstAttribute="top" secondItem="cmJ-SO-v9Y" secondAttribute="topMargin" constant="6" id="BiB-vD-d8G"/>
-                                        <constraint firstItem="X9W-7Y-uex" firstAttribute="centerY" secondItem="cmJ-SO-v9Y" secondAttribute="centerY" id="Cr6-Jc-2Ys"/>
-                                        <constraint firstItem="X9W-7Y-uex" firstAttribute="leading" secondItem="fFb-Lh-ScH" secondAttribute="trailing" constant="8" symbolic="YES" id="FPZ-48-2hu"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="AQ7-Rg-doo" secondAttribute="bottom" constant="9.5" id="GCj-1L-aMq"/>
                                         <constraint firstItem="HqX-cn-ops" firstAttribute="leading" secondItem="cmJ-SO-v9Y" secondAttribute="leadingMargin" constant="9" id="GDh-3c-MJ6"/>
                                         <constraint firstItem="fFb-Lh-ScH" firstAttribute="top" secondItem="cmJ-SO-v9Y" secondAttribute="topMargin" constant="-3" id="KhH-jq-BSo"/>
                                         <constraint firstItem="HqX-cn-ops" firstAttribute="top" secondItem="cmJ-SO-v9Y" secondAttribute="topMargin" constant="-9" id="Lz6-GN-nH3"/>
-                                        <constraint firstItem="AQ7-Rg-doo" firstAttribute="top" secondItem="cmJ-SO-v9Y" secondAttribute="topMargin" constant="3" id="Pm1-zL-fDh"/>
-                                        <constraint firstItem="AQ7-Rg-doo" firstAttribute="trailing" secondItem="cmJ-SO-v9Y" secondAttribute="trailingMargin" id="Qh3-ey-FWK"/>
                                         <constraint firstItem="fFb-Lh-ScH" firstAttribute="leading" secondItem="HqX-cn-ops" secondAttribute="trailing" constant="8" symbolic="YES" id="Yce-75-tuw"/>
-                                        <constraint firstItem="AQ7-Rg-doo" firstAttribute="leading" secondItem="X9W-7Y-uex" secondAttribute="trailing" constant="8" symbolic="YES" id="jLZ-HX-2zE"/>
-                                        <constraint firstItem="HqX-cn-ops" firstAttribute="centerY" secondItem="AQ7-Rg-doo" secondAttribute="centerY" id="jR6-i9-4mU"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="iconImageView" destination="CE7-AI-1Ur" id="rFj-rl-hAg"/>
                                     <outlet property="messageLabel" destination="fFb-Lh-ScH" id="GeI-RF-UX2"/>
+                                    <outlet property="notificationIcon" destination="CE7-AI-1Ur" id="LRk-nZ-m3Q"/>
                                     <outlet property="profileImageView" destination="HqX-cn-ops" id="Aac-S8-hPD"/>
                                 </connections>
                             </tableViewCell>
@@ -512,7 +496,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dGs-KI-SuA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2798" y="-73"/>
+            <point key="canvasLocation" x="2797.5999999999999" y="-73.313343328335833"/>
         </scene>
         <!--Entry Page-->
         <scene sceneID="IEr-pj-WrH">
@@ -773,11 +757,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="applaudIcon" width="200" height="200"/>
         <image name="cMajorScaleIcon" width="906" height="428"/>
         <image name="friendsIcon" width="37" height="37"/>
         <image name="goalIcon" width="37" height="37"/>
-        <image name="messageIcon" width="75" height="75"/>
         <image name="micIcon" width="790" height="756"/>
         <image name="noteIcon" width="37" height="37"/>
         <image name="trashIcon" width="38" height="50"/>

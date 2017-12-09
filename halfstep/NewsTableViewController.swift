@@ -47,9 +47,20 @@ class NewsTableViewController: UITableViewController {
         let userEvent = user.allUserEvents?.anyObject() as! UserEvent
         cell.messageLabel.text = user.name! + " " + userEvent.content!
         cell.profileImageView.image = UIImage(named: user.imagePath!)
+        
+        if userEvent.content!.range(of: "practice") != nil {
+            cell.iconImageView.image = UIImage(named: "noteIcon")
+        }
+        else if userEvent.content!.range(of: "level") != nil {
+            cell.iconImageView.image = UIImage(named: "level-up") // Dave Gandy
+        }
+        else if userEvent.content!.range(of: "became friends") != nil {
+            cell.iconImageView.image = UIImage(named: "friendsIcon")
+        }
+        
+        
         cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.width / 2
         cell.profileImageView.clipsToBounds = true
-        // Configure the cell...
 
         return cell
     }

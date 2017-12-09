@@ -52,6 +52,8 @@ class FriendsTableViewController: UITableViewController, FriendTableViewCellDele
         let user = friends[indexPath.row]
         cell.nameLabel.text = user.name
         cell.profileImageView.image = UIImage(named: user.imagePath!)
+        cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.size.width / 2
+        cell.profileImageView.clipsToBounds = true
         cell.cellDelegate = self
         cell.tag = indexPath.row
 
