@@ -85,6 +85,7 @@ class User: NSManagedObject {
             else if currentUsers.count == 0 {
                 let currentUser = User(context: context)
                 let goalData = GoalData.getSharedInstance()
+                let userData = UserData.getSharedInstance()
                 
                 currentUser.setValue("Stefan Swaans", forKey: "name")
                 currentUser.setValue(goalData.getGoalObjByGoalID(goalID: 0), forKey: "currentGoal")
@@ -94,7 +95,8 @@ class User: NSManagedObject {
                 userGoals.append(goalData.getGoalObjByGoalID(goalID: 0))
                 let userGoalsSet = NSSet(array: userGoals)
                 currentUser.setValue(userGoalsSet, forKey: "goals")
-                currentUser.setValue(nil, forKey: "friends")
+                let friendsArray = userData.getUserObjByUserID(userID: 2).friends?.allObjects as! [User]
+                currentUser.setValue(NSSet(array: friendsArray), forKey: "friends")
                 currentUser.setValue(nil, forKey: "allUserEvents")
                 currentUser.setValue(1, forKey: "id")
                 try context.save()

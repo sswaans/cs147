@@ -9,7 +9,9 @@
 import UIKit
 
 class FriendsTableViewController: UITableViewController, FriendTableViewCellDelegate {
-    var friends = [User]()
+    
+    var friends: [User] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadFriends()
@@ -18,6 +20,12 @@ class FriendsTableViewController: UITableViewController, FriendTableViewCellDele
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        friends = []
+        loadFriends()
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,6 +62,7 @@ class FriendsTableViewController: UITableViewController, FriendTableViewCellDele
         tableView.reloadData()
         let indexPath = IndexPath(row: tag, section: 0)
         friends.remove(at: tag)
+        UserData.getSharedInstance().getUserObjByUserID(userID: 2).friends = NSSet(array: friends)
         tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
     }
 

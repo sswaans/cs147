@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddFriendTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AddFriendTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddFriendTableViewCellDelegate {
     
     var notFriendsYet = [User]()
     
@@ -46,8 +46,19 @@ class AddFriendTableViewController: UIViewController, UITableViewDelegate, UITab
         let addFriend = notFriendsYet[indexPath.row]
         cell.nameLabel.text = addFriend.name
         cell.profileImageView.image = UIImage(named: addFriend.imagePath!)
+        cell.cellDelegate = self
+        cell.tag = indexPath.row
 
         return cell
+    }
+    
+    func addFriendAction(_ tag: Int) {
+        addFriendsTable.reloadData()
+        let friendToAdd = notFriendsYet[tag]
+        UserData.getSharedInstance().addFriendToUser(friend: friendToAdd, userID: 2)
+        let indexPath = IndexPath(row: tag, section: 0)
+        notFriendsYet.remove(at: tag)
+        addFriendsTable.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
     }
  
 
