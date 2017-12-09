@@ -19,7 +19,7 @@ class GoalData {
                                 "iconPath": "",
                                 "id": 0,
                                 "lessons": [0, 1, 2, 3, 4],
-                                "level": 10,
+                                "level": 2,
                                 "name": "major scales",
                                 "progress": 0,
                                 "progressRequired": 100],
@@ -27,32 +27,32 @@ class GoalData {
                                 "iconPath": "",
                                 "id": 1,
                                 "lessons": [5, 6, 7, 8, 9],
-                                "level": 10,
+                                "level": 1,
                                 "name": "minor scales",
                                 "progress": 0,
                                 "progressRequired": 100],
-                               ["description": "This goal unlocks a sure fire way to spice up any ii-V-I (in other words, every jazz song ever). Get your mind blown by the substitution at the heart of the quintessential jazzs sound, zamboosling fourths into halfsteps with the flick of a tri-tone. ",
+                               ["description": "this goal unlocks a sure fire way to spice up any ii-V-I (in other words, every jazz song ever). get your mind blown by the substitution at the heart of the quintessential jazz sound, zamboosling fourths into halfsteps with the flick of a tri-tone. ",
                                 "iconPath": "",
                                 "id": 2,
                                 "lessons": [10, 11, 12, 13, 14, 15],
-                                "level": 10,
+                                "level": 1,
                                 "name": "tri-tone substitution",
                                 "progress": 0,
                                 "progressRequired": 100],
-                               ["description": "Ever drooled over the cascading, chromatalicious lines from the jazz cats? Now it's your turn: learn the 8 note wonder we call the bebop scale and scooch your solos around like never before.",
+                               ["description": "ever drooled over the cascading, chromatalicious lines from the jazz cats? now it's your turn: learn the 8 note wonder we call the bebop scale and scooch your solos around like never before.",
                                 "iconPath": "",
                                 "id": 3,
                                 "lessons": [16, 17, 18],
-                                "level": 10,
-                                "name": "Bebop Scales",
+                                "level": 1,
+                                "name": "bebop scales",
                                 "progress": 0,
                                 "progressRequired": 100],
-                               ["description": "Blues players know how to get that grungy, raw sound when they need it. It's about time you did, too. Get funky in all the right ways with the minor blues scale, a soulful reincarnation of the obsequious minor pentatonic.",
+                               ["description": "blues players know how to get that grungy, raw sound when they need it. it's about time you did, too. get funky in all the right ways with the minor blues scale, a soulful reincarnation of the obsequious minor pentatonic.",
                                 "iconPath": "",
                                 "id": 4,
                                 "lessons": [19, 20, 21],
-                                "level": 10,
-                                "name": "Minor Blues Scale",
+                                "level": 1,
+                                "name": "minor blues scale",
                                 "progress": 0,
                                 "progressRequired": 100]]
 
@@ -69,6 +69,7 @@ class GoalData {
             goalObj.lessons = NSSet(array: lessons)
             goalObj.goalDescription = goalDict["description"] as? String
             goalObj.id = Int32(goalDict["id"] as! Int)
+            goalObj.level = Int32(goalDict["level"] as! Int)
             goals.append(goalObj)
         }
         

@@ -12,5 +12,5 @@ class GoalCollectionViewCell: UICollectionViewCell {
     
     var goal: Goal?
     var goalLabel: UILabel?
-    
+    @IBOutlet weak var levelLabel: UILabel!
 }

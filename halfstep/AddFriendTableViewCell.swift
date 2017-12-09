@@ -9,9 +9,16 @@
 import UIKit
 
 class AddFriendTableViewCell: UITableViewCell {
+    
+    weak var cellDelegate: AddFriendTableViewCellDelegate?
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBAction func addFriend(_ sender: UIButton) {
+        cellDelegate?.addFriendAction(tag)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,4 +30,8 @@ class AddFriendTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+}
+
+protocol AddFriendTableViewCellDelegate: class {
+    func addFriendAction(_ tag: Int)
 }

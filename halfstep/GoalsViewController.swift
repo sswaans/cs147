@@ -61,7 +61,7 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
 
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let numLockedGoals = 2
+        let numLockedGoals = 3
         switch section {
         case 0:
             return (user!.goals?.count)!
@@ -102,7 +102,7 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
         if let goalCell = cell as? GoalCollectionViewCell {
             let goalLabel = UILabel()
             goalLabel.text = "goal name"
-            goalLabel.font = UIFont(name: "AvenirNextCondensed-Regular", size: 17.0)
+            goalLabel.font = UIFont(name: "AvenirNextCondensed-Regular", size: 19.0)
             collectionView.addSubview(goalLabel)
             goalLabel.frame = CGRect(x: goalCell.frame.minX, y: goalCell.frame.maxY + 10, width: goalCell.frame.width, height: 20)
             goalLabel.textAlignment = NSTextAlignment.center
@@ -115,6 +115,12 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
                 let goals = try context.fetch(request)
                 goalCell.goal = goals[0]
                 goalLabel.text = goalCell.goal?.getName()
+                if indexPath.section == 0{
+                    goalCell.levelLabel.text = goalCell.goal?.level.description
+                }
+                else {
+                    goalCell.levelLabel.text = ""
+                }
             } catch {
                 // do nothing ;)
                 // sometimes i like to bury myself in the backyard and pretend im a carrot -<)=
@@ -182,7 +188,6 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
         selectedGoal = nil
         user?.addGoal(goalToAdd: goal!)
         user?.setCurrentGoal(goalToSet: goal!)
-        print(user?.goals)
         ((tabBarController?.viewControllers?[0] as! UINavigationController).viewControllers[0] as! LessonsCollectionViewController).navBar.title = goal?.name!
         tabBarController?.selectedIndex = 0
     }

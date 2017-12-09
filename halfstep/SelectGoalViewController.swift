@@ -21,6 +21,8 @@ class SelectGoalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //goalLabel.adjustsFontSizeToFitWidth = true;
+        
         // Aesthetic button stuff
         goalButton.clipsToBounds = true
         goalButton.layer.cornerRadius = goalButton.frame.size.width / 2.0

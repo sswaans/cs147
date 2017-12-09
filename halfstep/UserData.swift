@@ -189,6 +189,10 @@ class UserData {
         return users
     }
     
+    public func addFriendToUser(friend: User, userID: Int){
+        users[userID].addToFriends(friend)
+    }
+    
     public func getNotFriends() -> [User] {
         var notFriends = [User]()
         for i in 5..<8 {
