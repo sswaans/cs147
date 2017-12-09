@@ -37,7 +37,7 @@ class LessonViewController: UIViewController {
                 DispatchQueue.main.asyncAfter(deadline: when) { [weak self] in
                     self?.recordingStatusLabel.text = ""
                     self?.recordButton.alpha = 1
-                    self?.instructionsLabel.text = "whoops, try again."
+                    self?.instructionsLabel.text = "not quite, try again."
                     self?.clickCount += 1
                 }
             case 2:

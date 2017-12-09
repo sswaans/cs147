@@ -29,8 +29,8 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
         super.viewDidLoad()
         goalsCollectionView.dataSource = self
         goalsCollectionView.delegate = self
-        user = User.getCurrentUser()
         GoalData.getSharedInstance()
+        user = User.getCurrentUser()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,7 +70,7 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
         case 2:
             return numLockedGoals
         default:
-            return 0
+            return 1
         }
     }
 

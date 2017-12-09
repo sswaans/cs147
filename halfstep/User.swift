@@ -63,23 +63,18 @@ class User: NSManagedObject {
     
     public static func getCurrentUser() -> User? {
         let context = AppDelegate.persistentContainer.viewContext
-        do {
-            // If user doesn't exist, we must create one
-            let userID = UserDefaults.standard.integer(forKey: "userID")
-            if userID == 0 {
-                let request: NSFetchRequest<User> = User.fetchRequest()
-                let users = try context.fetch(request)
-                UserDefaults.standard.setValue(users.count + 1, forKey: "userID")
-            }
-        } catch {
-            return nil
-        }
         
         do {
             let request: NSFetchRequest<User> = User.fetchRequest()
-            request.predicate = NSPredicate(format: "id = %d", UserDefaults.standard.integer(forKey: "userID"))
+            request.predicate = NSPredicate(format: "id = %d", 0)
             let currentUsers = try context.fetch(request)
             if currentUsers.count > 0 {
+                if currentUsers[0].goals?.count == 0 {
+                    var userGoals = [Goal]()
+                    userGoals.append(GoalData.getSharedInstance().getGoalObjByGoalID(goalID: 0))
+                    let userGoalsSet = NSSet(array: userGoals)
+                    currentUsers[0].setValue(userGoalsSet, forKey: "goals")
+                }
                 return currentUsers[0]
             }
             else if currentUsers.count == 0 {
