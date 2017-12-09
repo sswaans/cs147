@@ -47,6 +47,8 @@ class NewsTableViewController: UITableViewController {
         let userEvent = user.allUserEvents?.anyObject() as! UserEvent
         cell.messageLabel.text = user.name! + " " + userEvent.content!
         cell.profileImageView.image = UIImage(named: user.imagePath!)
+        cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.width / 2
+        cell.profileImageView.clipsToBounds = true
         // Configure the cell...
 
         return cell
