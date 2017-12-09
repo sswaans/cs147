@@ -20,6 +20,9 @@ class FriendProfileViewController: UIViewController {
         let friendUserObj = GoalData.getSharedInstance().getClickedFriend()
         print(friendUserObj.imagePath!)
         userProfileImage.image = UIImage(named: friendUserObj.imagePath!)
+        userProfileImage.layer.cornerRadius = userProfileImage.frame.size.width / 2
+        userProfileImage.layer.borderWidth = 2.0
+        userProfileImage.layer.borderColor = UIColor.white.cgColor
         userNameLabel.text = friendUserObj.name
         userCurrentGoalLabel.text = friendUserObj.currentGoal?.name
     }

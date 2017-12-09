@@ -52,8 +52,7 @@ class AddFriendTableViewController: UIViewController, UITableViewDelegate, UITab
         
         cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.size.width / 2
         cell.profileImageView.clipsToBounds = true
-        cell.profileImageView.layer.borderWidth = 2.0
-        cell.profileImageView.layer.borderColor = UIColor.white.cgColor
+       
 
         return cell
     }
