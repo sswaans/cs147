@@ -53,6 +53,8 @@ class FriendsTableViewController: UITableViewController, FriendTableViewCellDele
         let user = friends[indexPath.row]
         cell.nameLabel.text = user.name
         cell.profileImageView.image = UIImage(named: user.imagePath!)
+        cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.size.width / 2
+        cell.profileImageView.clipsToBounds = true
         cell.cellDelegate = self
         cell.tag = indexPath.row
 
@@ -75,16 +77,21 @@ class FriendsTableViewController: UITableViewController, FriendTableViewCellDele
         tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
     }
 
-    /*
+
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    // This method lets you configure a view controller before it's presented.
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print ("made it to SUGUEUE PREPARE in FriendsTabvleViewController")
+        super.prepare(for: segue, sender: sender)
+        
+        let friendUserObj = UserData.getSharedInstance().getUserObjByUserName(userName: (sender as! FriendTableViewCell).nameLabel.text!)
+        print(friendUserObj.name!)
+        GoalData.getSharedInstance().setClickedFriend(friend: friendUserObj)
+    }
+
+ 
     // MARK: Private Methods
     private func loadFriends() {
         do {
