@@ -432,7 +432,7 @@
         <!--Profile View Controller-->
         <scene sceneID="FVO-EL-O3c">
             <objects>
-                <viewController id="dyD-Po-zSD" userLabel="Profile View Controller" sceneMemberID="viewController">
+                <viewController id="dyD-Po-zSD" userLabel="Profile View Controller" customClass="FriendProfileViewController" customModule="halfstep" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xnk-bb-R7T"/>
                         <viewControllerLayoutGuide type="bottom" id="oSX-UO-Yqm"/>
@@ -455,7 +455,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Ln-Z3-ZED">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noteIcon" translatesAutoresizingMaskIntoConstraints="NO" id="6Ln-Z3-ZED">
                                 <rect key="frame" x="140" y="273" width="95" height="97"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -476,6 +476,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="userCurrentGoalLabel" destination="JeP-QK-obP" id="XQt-mv-Ga6"/>
+                        <outlet property="userNameLabel" destination="yAB-TD-Mef" id="heh-Pt-f8N"/>
+                        <outlet property="userProfileImage" destination="YNg-os-i7w" id="uXF-Z5-guE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MzG-jW-f2X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -810,6 +815,6 @@
         <image name="trashIcon" width="38" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9lN-SV-M9k"/>
+        <segue reference="CoV-Gn-CUk"/>
     </inferredMetricsTieBreakers>
 </document>

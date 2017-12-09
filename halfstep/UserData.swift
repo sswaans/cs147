@@ -182,7 +182,6 @@ class UserData {
     }
     
     public func getUserObjByUserName(userName: String) -> User {
-        print(userNameToIdMap[userName], users)
         return users[userNameToIdMap[userName]! - 2] // HACK: they'r sorted by ID starting at id = 2
     }
     
