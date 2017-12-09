@@ -61,7 +61,7 @@ class GoalsViewController: UIViewController, UICollectionViewDelegate, UICollect
 
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let numLockedGoals = 2
+        let numLockedGoals = 3
         switch section {
         case 0:
             return (user!.goals?.count)!

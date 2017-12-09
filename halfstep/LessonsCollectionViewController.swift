@@ -140,15 +140,19 @@ class LessonsCollectionViewController: UICollectionViewController {
                 // do nothing ;)
                 // sometimes i like to cover myself in mayonnaise and pretend i'm a slug =<===>
             }
+            var prevLessonCell: LessonsCollectionViewCell? = nil
+            if indexPath.section > 0 {
+                prevLessonCell = lessonsCollectionView.cellForItem(at: IndexPath(item: 0, section: indexPath.section - 1)) as? LessonsCollectionViewCell
+            }
             if (lessonCell.lesson?.completed)! {
                 cell.backgroundColor = UIColor(red: 1.0, green: 226.0/255.0, blue: 81.0/255.0, alpha: 1.0)
             }
-            else if lessonCell.lesson != user?.currentLesson {
-                cell.backgroundColor = UIColor.gray
-            }
-            else {
+            else if !(lessonCell.lesson?.completed)! && ((prevLessonCell != nil && (prevLessonCell?.lesson?.completed)!) || prevLessonCell == nil) {
                 cell.backgroundColor = UIColor(red: 13.0/255.0, green: 152.0/255.0, blue: 1.0, alpha: 1.0)
             }
+            else {
+                cell.backgroundColor = UIColor.gray
+                            }
         }
     
         return cell
