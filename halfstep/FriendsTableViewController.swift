@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class FriendsTableViewController: UITableViewController, FriendTableViewCellDelegate {
     
@@ -22,7 +23,7 @@ class FriendsTableViewController: UITableViewController, FriendTableViewCellDele
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    public func reloadTable() {
         friends = []
         loadFriends()
         tableView.reloadData()
@@ -61,8 +62,16 @@ class FriendsTableViewController: UITableViewController, FriendTableViewCellDele
     func deleteFriendAction(_ tag: Int) {
         tableView.reloadData()
         let indexPath = IndexPath(row: tag, section: 0)
-        friends.remove(at: tag)
-        UserData.getSharedInstance().getUserObjByUserID(userID: 2).friends = NSSet(array: friends)
+        do {
+            let request: NSFetchRequest<User> = User.fetchRequest()
+            request.predicate = NSPredicate(format: "id = %d", 2)
+            let users = try AppDelegate.viewContext.fetch(request)
+            users[0].removeFromFriends(NSSet(object: friends[tag]))
+            friends.remove(at: tag)
+        } catch {
+            // do nothing ;)
+            // sometimes i like to cover myself in mayonnaise and pretend i'm a slug =<===>
+        }
         tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
     }
 
@@ -78,7 +87,15 @@ class FriendsTableViewController: UITableViewController, FriendTableViewCellDele
     
     // MARK: Private Methods
     private func loadFriends() {
-        friends += UserData.getSharedInstance().getUserObjByUserID(userID: 2).friends?.allObjects as! [User]
+        do {
+            let request: NSFetchRequest<User> = User.fetchRequest()
+            request.predicate = NSPredicate(format: "id = %d", 2)
+            let users = try AppDelegate.viewContext.fetch(request)
+            friends += users[0].friends?.allObjects as! [User]
+        } catch {
+            // do nothing ;)
+            // sometimes i like to cover myself in mayonnaise and pretend i'm a slug =<===>
+        }
     }
 
 }

@@ -138,6 +138,7 @@ class UserData {
         for userDict in userDictionaryArray {
             let userEntity = NSEntityDescription.entity(forEntityName: "User", in: AppDelegate.viewContext)
             let userObj = User(entity: userEntity!, insertInto: AppDelegate.viewContext)
+            userObj.setValue(userDict["id"], forKey: "id")
             userObj.name = userDict["name"] as? String
             userObj.currentGoal   = goalData.getGoalObjByGoalID(goalID: (userDict["currentGoal"] as? Int)!)
             userObj.currentLesson = goalData.getLessonObjById(lessonID: (userDict["currentLesson"] as? Int)!)
@@ -190,7 +191,8 @@ class UserData {
     }
     
     public func addFriendToUser(friend: User, userID: Int){
-        users[userID].addToFriends(friend)
+        let newFriends = users[userID].friends?.adding(friend)
+        users[userID].setValue(newFriends, forKey: "friends")
     }
     
     public func getNotFriends() -> [User] {
