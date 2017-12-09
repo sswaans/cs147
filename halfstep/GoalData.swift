@@ -195,10 +195,10 @@ class GoalData {
             let lessonDict = lessonDictionaryArray[index]
             let lessonEntity = NSEntityDescription.entity(forEntityName: "Lesson", in: AppDelegate.viewContext)
             let lessonObj = Lesson(entity: lessonEntity!, insertInto: AppDelegate.viewContext)
-            lessonObj.completed = lessonDict["completed"] as! Bool
-            lessonObj.name = lessonDict["name"] as? String
+            lessonObj.setValue(lessonDict["completed"] as! Bool, forKey: "completed")
+            lessonObj.setValue(lessonDict["name"] as? String, forKey: "name")
+            lessonObj.setValue(Int32(lessonDict["id"] as! Int), forKey: "id")
             lessonObj.xpPoints = lessonDict["xpPoints"] as! Double
-            lessonObj.id = Int32(lessonDict["id"] as! Int)
             allLessons.append(lessonObj)
         }
     }
