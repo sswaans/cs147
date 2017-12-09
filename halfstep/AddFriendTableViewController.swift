@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AddFriendTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddFriendTableViewCellDelegate {
     
@@ -60,6 +61,18 @@ class AddFriendTableViewController: UIViewController, UITableViewDelegate, UITab
     func addFriendAction(_ tag: Int) {
         addFriendsTable.reloadData()
         let friendToAdd = notFriendsYet[tag]
+        do {
+            let request: NSFetchRequest<User> = User.fetchRequest()
+            request.predicate = NSPredicate(format: "id = %d", 2)
+            let users = try AppDelegate.viewContext.fetch(request)
+            let newFriends = users[0].friends?.adding(friendToAdd)
+            users[0].setValue(newFriends, forKey: "friends")
+            try AppDelegate.viewContext.save()
+            (self.parent?.childViewControllers[1] as! FriendsTableViewController).reloadTable()
+        } catch {
+            // do nothing ;)
+            // sometimes i like to cover myself in mayonnaise and pretend i'm a slug =<===>
+        }
         UserData.getSharedInstance().addFriendToUser(friend: friendToAdd, userID: 2)
         let indexPath = IndexPath(row: tag, section: 0)
         notFriendsYet.remove(at: tag)
