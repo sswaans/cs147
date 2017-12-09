@@ -14,6 +14,7 @@ class GoalData {
     private static let sharedInstance = GoalData()
     private var goals: [Goal]
     private var allLessons: [Lesson]
+    private var clickedFriend: User!
     private let goalDictionaryArray = [["description": "anything but boring, mastering the seven noted wonders at the heart of western music will open up your musical world, from brahams to the beatles.",
                                 "iconPath": "",
                                 "id": 0,
@@ -77,6 +78,15 @@ class GoalData {
         } catch {
             fatalError("Failure to save context: \(error)")
         }
+        
+        let userEntity = NSEntityDescription.entity(forEntityName: "User", in: AppDelegate.viewContext)
+        let userObj = User(entity: userEntity!, insertInto: AppDelegate.viewContext)
+        userObj.name = "blank"
+        userObj.currentGoal   = goals[0]
+        userObj.currentLesson = allLessons[0]
+        userObj.allUserEvents = NSSet(array: [])
+        userObj.imagePath     = "blank"
+        clickedFriend = userObj
         
     }
 
@@ -195,10 +205,10 @@ class GoalData {
             let lessonDict = lessonDictionaryArray[index]
             let lessonEntity = NSEntityDescription.entity(forEntityName: "Lesson", in: AppDelegate.viewContext)
             let lessonObj = Lesson(entity: lessonEntity!, insertInto: AppDelegate.viewContext)
-            lessonObj.completed = lessonDict["completed"] as! Bool
-            lessonObj.name = lessonDict["name"] as? String
+            lessonObj.setValue(lessonDict["completed"] as! Bool, forKey: "completed")
+            lessonObj.setValue(lessonDict["name"] as? String, forKey: "name")
+            lessonObj.setValue(Int32(lessonDict["id"] as! Int), forKey: "id")
             lessonObj.xpPoints = lessonDict["xpPoints"] as! Double
-            lessonObj.id = Int32(lessonDict["id"] as! Int)
             allLessons.append(lessonObj)
         }
     }
@@ -232,6 +242,14 @@ class GoalData {
         
         let lessonArray = goalDictionaryArray[Int(id)]["lessons"] as! [Int]
         return lessonArray[0]
+    }
+    
+    public func setClickedFriend(friend: User) {
+        clickedFriend = friend
+    }
+    
+    public func getClickedFriend() -> User {
+        return clickedFriend
     }
     
     
