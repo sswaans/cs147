@@ -59,7 +59,7 @@ class UserData {
                                     "name": "james",
                                     "imagePath": "james_landay"],
                                    ["allUserEvents": ["practiced today", "practiced yesterday", "leveled up in 'play all major scales'", "set a new goal: 'play all minor scales'", "became friends with beyonce", "became friends with jayz"],
-                                    "currentGoal": 0,
+                                    "currentGoal": 2,
                                     "currentLesson": 2,
                                     "friends": ["paulmccartney",
                                                 "ringostarr",

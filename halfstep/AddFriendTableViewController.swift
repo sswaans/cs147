@@ -65,6 +65,15 @@ class AddFriendTableViewController: UIViewController, UITableViewDelegate, UITab
         notFriendsYet.remove(at: tag)
         addFriendsTable.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print ("made it to SUGUEUE PREPARE in FriendsTabvleViewController")
+        super.prepare(for: segue, sender: sender)
+        print((sender as! AddFriendTableViewCell).nameLabel.text!)
+        let friendUserObj = UserData.getSharedInstance().getUserObjByUserName(userName: (sender as! AddFriendTableViewCell).nameLabel.text!)
+        print(friendUserObj.name!)
+        GoalData.getSharedInstance().setClickedFriend(friend: friendUserObj)
+    }
  
 
     /*

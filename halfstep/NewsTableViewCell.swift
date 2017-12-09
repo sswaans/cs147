@@ -11,9 +11,8 @@ import UIKit
 class NewsTableViewCell: UITableViewCell {
     // MARK: Properties
     @IBOutlet weak var messageLabel: UILabel!
-    
-    @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var iconImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

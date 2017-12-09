@@ -65,6 +65,14 @@ class NewsTableViewController: UITableViewController {
         return cell
     }
  
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print ("made it to SUGUEUE PREPARE in FriendsTabvleViewController")
+        super.prepare(for: segue, sender: sender)
+        print((sender as! NewsTableViewCell).messageLabel.text!)
+        let friendUserObj = UserData.getSharedInstance().getUserObjByUserName(userName: (sender as! NewsTableViewCell).messageLabel.text!.split(separator: " ")[0] as! String)
+        print(friendUserObj.name!)
+        GoalData.getSharedInstance().setClickedFriend(friend: friendUserObj)
+    }
 
     /*
     // Override to support conditional editing of the table view.
