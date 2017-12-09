@@ -23,6 +23,7 @@ class FriendProfileViewController: UIViewController {
         userProfileImage.layer.cornerRadius = userProfileImage.frame.size.width / 2
         userProfileImage.layer.borderWidth = 2.0
         userProfileImage.layer.borderColor = UIColor.white.cgColor
+        userProfileImage.clipsToBounds = true
         userNameLabel.text = friendUserObj.name
         userCurrentGoalLabel.text = friendUserObj.currentGoal?.name
     }
